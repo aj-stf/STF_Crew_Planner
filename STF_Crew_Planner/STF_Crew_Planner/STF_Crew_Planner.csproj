@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{01D2849D-A2B1-4F4B-BD49-566D0D5A6A0D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>STF_CharacterPlanner</RootNamespace>
+    <AssemblyName>STF_Crew_Planner</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CoreTechs.Common, Version=21.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CoreTechs.Common.21.0.1\lib\net45\CoreTechs.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AvailableTalents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AvailableTalents.Designer.cs">
+      <DependentUpon>AvailableTalents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BridgeMember.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BridgeMember.Designer.cs">
+      <DependentUpon>BridgeMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImportData.cs" />
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_Control.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Menu_Control.Designer.cs">
+      <DependentUpon>Menu_Control.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OfficerControl.Designer.cs">
+      <DependentUpon>OfficerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficerSkillDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="OfficerSkillDisplay.Designer.cs">
+      <DependentUpon>OfficerSkillDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OutputToFile.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveLoadHandler.cs" />
+    <Compile Include="SelectedTalents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SelectedTalents.Designer.cs">
+      <DependentUpon>SelectedTalents.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AvailableTalents.resx">
+      <DependentUpon>AvailableTalents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BridgeMember.resx">
+      <DependentUpon>BridgeMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu_Control.resx">
+      <DependentUpon>Menu_Control.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficerControl.resx">
+      <DependentUpon>OfficerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficerSkillDisplay.resx">
+      <DependentUpon>OfficerSkillDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="SelectedTalents.resx">
+      <DependentUpon>SelectedTalents.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\job_list.csv" />
+    <None Include="Resources\skill_list.csv" />
+    <None Include="Resources\skill_per_job_list.csv" />
+    <None Include="Resources\stf_talent_job.csv" />
+    <None Include="Resources\talent_points.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

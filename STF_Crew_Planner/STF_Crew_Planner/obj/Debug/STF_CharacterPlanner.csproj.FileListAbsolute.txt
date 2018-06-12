@@ -1,0 +1,17 @@
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\bin\Debug\STF_CharacterPlanner.exe.config
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\bin\Debug\STF_CharacterPlanner.exe
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\bin\Debug\STF_CharacterPlanner.pdb
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\bin\Debug\CoreTechs.Common.dll
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.csprojResolveAssemblyReference.cache
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.Form1.resources
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.Properties.Resources.resources
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.csproj.GenerateResource.Cache
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.csproj.CoreCompileInputs.cache
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.exe
+c:\users\alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.pdb
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.OfficerControl.resources
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.BridgeMember.resources
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.OfficerSkillDisplay.resources
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.AvailableTalents.resources
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.SelectedTalents.resources
+C:\Users\Alex\source\repos\STF_CharacterPlanner\STF_CharacterPlanner\obj\Debug\STF_CharacterPlanner.Menu_Control.resources
