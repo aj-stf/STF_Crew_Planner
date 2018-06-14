@@ -95,6 +95,24 @@
     <Compile Include="SelectedTalents.Designer.cs">
       <DependentUpon>SelectedTalents.cs</DependentUpon>
     </Compile>
+    <Compile Include="TalentMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TalentMenu.Designer.cs">
+      <DependentUpon>TalentMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TalentSearchDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TalentSearchDisplay.Designer.cs">
+      <DependentUpon>TalentSearchDisplay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TalentSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TalentSearchForm.Designer.cs">
+      <DependentUpon>TalentSearchForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AvailableTalents.resx">
       <DependentUpon>AvailableTalents.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,6 +143,15 @@
     </Compile>
     <EmbeddedResource Include="SelectedTalents.resx">
       <DependentUpon>SelectedTalents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalentMenu.resx">
+      <DependentUpon>TalentMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalentSearchDisplay.resx">
+      <DependentUpon>TalentSearchDisplay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalentSearchForm.resx">
+      <DependentUpon>TalentSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

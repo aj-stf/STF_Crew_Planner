@@ -53,5 +53,11 @@ namespace STF_CharacterPlanner
         {
             groupNameBox.Text = GroupName;
         }
+
+        private void searchTalentButton_Click(object sender, EventArgs e)
+        {
+            TalentSearchForm formMe = new TalentSearchForm();
+            formMe.Show();
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using CoreTechs.Common.Text;
 using System.Linq;
+using System.Collections.Generic;
 
 namespace STF_CharacterPlanner
 {
@@ -203,6 +204,37 @@ namespace STF_CharacterPlanner
                 TableData.AppendFormat("\n");
             }
             return TableData.ToString();
+        }
+        public string EvenColumns(int desiredWidth, IEnumerable<IEnumerable<string>> lists)
+        {
+            return string.Join(Environment.NewLine, EvenColumns(desiredWidth, true, lists));
+        }
+
+        public IEnumerable<string> EvenColumns(int desiredWidth, bool rightOrLeft, IEnumerable<IEnumerable<string>> lists)
+        {
+            return lists.Select(o => EvenColumns(desiredWidth, rightOrLeft, o.ToArray()));
+        }
+
+        public string EvenColumns(int desiredWidth, bool rightOrLeftAlignment, string[] list, bool fitToItems = false)
+        {
+            int columnWidth = (rightOrLeftAlignment ? -1 : 1) *
+                                (fitToItems
+                                    ? Math.Max(desiredWidth, list.Select(o => o.Length).Max())
+                                    : desiredWidth
+                                );
+
+            string format = string.Concat(Enumerable.Range(rightOrLeftAlignment ? 0 : 1, list.Length - 1).Select(i => string.Format("{{{0},{1}}}", i, columnWidth)));
+
+            if (rightOrLeftAlignment)
+            {
+                format += "{" + (list.Length - 1) + "}";
+            }
+            else
+            {
+                format = "{0}" + format;
+            }
+
+            return string.Format(format, list);
         }
     }
 }

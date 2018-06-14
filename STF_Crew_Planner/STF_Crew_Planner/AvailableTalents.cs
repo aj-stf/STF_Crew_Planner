@@ -112,7 +112,8 @@ namespace STF_CharacterPlanner
 
             if (tblFiltered1.Rows.Count > 0)
             {
-                TalentDataTable = tblFiltered1.AsEnumerable().OrderBy(row => row.Field<Int32>("Rank")).CopyToDataTable();
+                //TalentDataTable = tblFiltered1.AsEnumerable().OrderBy(row => row.Field<Int32>("Rank")).CopyToDataTable();
+                TalentDataTable = tblFiltered1.AsEnumerable().OrderBy(row => row.Field<string>("Job")).CopyToDataTable();
             }
             
 
@@ -132,11 +133,26 @@ namespace STF_CharacterPlanner
         {
             foreach (DataRow dr in TalentDataTable.Rows)
             {
+                var snglTab = "\t";
+                var dblTab = "\t\t";
+                var trpTab = "\t\t\t";
                 var JobName = dr.Field<string>("Job");
                 var Type = dr.Field<string>("Type");
                 var Name = dr.Field<string>("Name");
                 var Rank = dr.Field<Int32>("Rank");
-                string displayRowString =  Rank.ToString() + " "+ Name + " " + Type + " " + JobName;
+                string displayRowString = "";
+                if (Name.Length > 15)
+                {
+                    displayRowString = Rank.ToString() + snglTab + Name + snglTab + JobName;
+                }
+                else if (Name.Length < 8)
+                {
+                    displayRowString = Rank.ToString() + snglTab + Name + trpTab + JobName;
+                }
+                else
+                {
+                    displayRowString = Rank.ToString() + snglTab + Name + dblTab + JobName;
+                }
                 TalentList.Add(displayRowString);
             }
             if (TalentList.Count > 0)

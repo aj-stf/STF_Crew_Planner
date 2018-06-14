@@ -36,16 +36,16 @@
             // 
             // selectedTalents1
             // 
-            this.selectedTalents1.Location = new System.Drawing.Point(512, -10);
+            this.selectedTalents1.Location = new System.Drawing.Point(482, -10);
             this.selectedTalents1.Name = "selectedTalents1";
-            this.selectedTalents1.Size = new System.Drawing.Size(280, 175);
+            this.selectedTalents1.Size = new System.Drawing.Size(380, 175);
             this.selectedTalents1.TabIndex = 4;
             // 
             // availableTalents1
             // 
-            this.availableTalents1.Location = new System.Drawing.Point(818, -10);
+            this.availableTalents1.Location = new System.Drawing.Point(880, -10);
             this.availableTalents1.Name = "availableTalents1";
-            this.availableTalents1.Size = new System.Drawing.Size(280, 175);
+            this.availableTalents1.Size = new System.Drawing.Size(380, 175);
             this.availableTalents1.TabIndex = 3;
             // 
             // officerControl1
@@ -72,7 +72,7 @@
             this.Controls.Add(this.officerControl1);
             this.Controls.Add(this.officerSkillDisplay1);
             this.Name = "BridgeMember";
-            this.Size = new System.Drawing.Size(1200, 158);
+            this.Size = new System.Drawing.Size(1260, 158);
             this.ResumeLayout(false);
 
         }

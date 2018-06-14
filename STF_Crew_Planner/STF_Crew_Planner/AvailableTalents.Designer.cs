@@ -36,11 +36,13 @@
             // availableTalentBox
             // 
             this.availableTalentBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(239)))), ((int)(((byte)(250)))));
+            this.availableTalentBox.Font = new System.Drawing.Font("Courier New", 8F);
             this.availableTalentBox.FormattingEnabled = true;
+            this.availableTalentBox.ItemHeight = 14;
             this.availableTalentBox.Location = new System.Drawing.Point(2, 29);
             this.availableTalentBox.Name = "availableTalentBox";
             this.availableTalentBox.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.availableTalentBox.Size = new System.Drawing.Size(276, 134);
+            this.availableTalentBox.Size = new System.Drawing.Size(376, 130);
             this.availableTalentBox.TabIndex = 0;
             this.availableTalentBox.SelectedIndexChanged += new System.EventHandler(this.availableTalentBox_SelectedIndexChanged);
             // 
@@ -73,7 +75,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.availableTalentBox);
             this.Name = "AvailableTalents";
-            this.Size = new System.Drawing.Size(280, 175);
+            this.Size = new System.Drawing.Size(380, 175);
             this.ResumeLayout(false);
             this.PerformLayout();
 

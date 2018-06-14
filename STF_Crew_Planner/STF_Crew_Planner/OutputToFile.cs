@@ -95,6 +95,9 @@ namespace STF_CharacterPlanner
         }
         private string CombinedCharacterString(DataTable Jobs, DataTable Talents, List<string> Skills, string Officer)
         {
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
             string myString = "";
             string rC = "\n";
             myString += "---------------------------------------------------" + "\n";
@@ -105,7 +108,7 @@ namespace STF_CharacterPlanner
             myString += "-------------------------------------------" + "\n";
             foreach (DataRow dr in Jobs.Rows)
             {
-                var newString = dr[1].ToString() + "    " + dr[0].ToString() + rC;
+                var newString = dr[1].ToString() + sT + dr[0].ToString() + rC;
                 myString += newString;
             }
             myString += "-------------------------------------------" + "\n";
@@ -129,6 +132,9 @@ namespace STF_CharacterPlanner
         }
         private List<string> combinedSkillList(BridgeMember member)
         {
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
             List<string> myList = new List<string>();
             var firstList = member.returnNumList();
             var secondList = member.returnSkillsList();
@@ -137,7 +143,7 @@ namespace STF_CharacterPlanner
             {
                 for (int x = 0; x < firstList.Count; x++)
                 {
-                    string newString = firstList[x].ToString() + "    " + secondList[x].ToString();
+                    string newString = firstList[x].ToString() + sT + secondList[x].ToString();
                     myList.Add(newString);
                 }
             }
@@ -145,12 +151,46 @@ namespace STF_CharacterPlanner
         }
         private string NewTalentString(DataRow dr)
         {
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String firstTab = tT;
+            String secondTab = dT;
+            String thirdTab = sT;
+            String fourthTab = sT;
             var JobName = dr.Field<string>("Job");
             var Type = dr.Field<string>("Type");
             var Name = dr.Field<string>("Name");
             var Rank = dr.Field<Int32>("Rank");
             var Desc = dr.Field<string>("Description");
-            string displayRowString = Rank.ToString() + "    " + Name + "    " + JobName + "    " + Type + "    " + Desc;
+
+            if (Name.Length < 12)
+            {
+                firstTab = fT;
+            }
+            else if (Name.Length > 19)
+            {
+                firstTab = sT;
+            }
+            else if (Name.Length > 15)
+            {
+                firstTab = dT;
+            }
+
+            if (JobName.Length < 8)
+            {
+                secondTab = tT;
+            }else if (JobName.Length < 12)
+            {
+                secondTab = dT;
+            }
+            else if (JobName.Length > 13)
+            {
+                secondTab = sT;
+            }
+
+            string displayRowString = Rank.ToString() + sT + Name + firstTab + JobName + secondTab + Type + thirdTab + Desc;
             return displayRowString;
         }
     }

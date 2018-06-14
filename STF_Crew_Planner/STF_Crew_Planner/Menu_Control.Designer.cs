@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.searchTalentButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resetButton
@@ -115,11 +116,24 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // searchTalentButton
+            // 
+            this.searchTalentButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.searchTalentButton.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.searchTalentButton.Location = new System.Drawing.Point(1100, 63);
+            this.searchTalentButton.Name = "searchTalentButton";
+            this.searchTalentButton.Size = new System.Drawing.Size(95, 23);
+            this.searchTalentButton.TabIndex = 8;
+            this.searchTalentButton.Text = "Search Talents";
+            this.searchTalentButton.UseVisualStyleBackColor = false;
+            this.searchTalentButton.Click += new System.EventHandler(this.searchTalentButton_Click);
+            // 
             // Menu_Control
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.searchTalentButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -142,5 +156,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button searchTalentButton;
     }
 }

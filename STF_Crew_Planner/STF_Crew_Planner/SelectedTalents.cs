@@ -45,11 +45,27 @@ namespace STF_CharacterPlanner
         }
         public string NewTalentString(DataRow dr)
         {
+            var snglTab = "\t";
+            var dblTab = "\t\t";
+            var trpTab = "\t\t\t";
             var JobName = dr.Field<string>("Job");
             var Type = dr.Field<string>("Type");
             var Name = dr.Field<string>("Name");
             var Rank = dr.Field<Int32>("Rank");
+
             string displayRowString = Rank.ToString() + " " + Name + " " + Type + " " + JobName;
+            if (Name.Length > 15)
+            {
+                displayRowString = Rank.ToString() + snglTab + Name + snglTab + JobName;
+            }
+            else if (Name.Length < 8)
+            {
+                displayRowString = Rank.ToString() + snglTab + Name + trpTab + JobName;
+            }
+            else
+            {
+                displayRowString = Rank.ToString() + snglTab + Name + dblTab + JobName;
+            }
             return displayRowString;
         }
         public DataTable returnSelectedTalents()
