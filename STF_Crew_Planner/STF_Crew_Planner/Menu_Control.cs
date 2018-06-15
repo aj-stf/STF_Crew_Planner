@@ -17,6 +17,7 @@ namespace STF_CharacterPlanner
         public Menu_Control()
         {
             InitializeComponent();
+            refreshWikiButton.Hide();
             myParent = (this.Parent as MainForm);
         }
 
@@ -58,6 +59,12 @@ namespace STF_CharacterPlanner
         {
             TalentSearchForm formMe = new TalentSearchForm();
             formMe.Show();
+        }
+
+        private void refreshWikiButton_Click(object sender, EventArgs e)
+        {
+            myParent = (this.Parent as MainForm);
+            myParent.RefreshDataFromWiki();
         }
     }
 }

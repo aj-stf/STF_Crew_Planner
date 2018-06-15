@@ -36,6 +36,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.searchTalentButton = new System.Windows.Forms.Button();
+            this.refreshWikiButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resetButton
@@ -128,11 +129,22 @@
             this.searchTalentButton.UseVisualStyleBackColor = false;
             this.searchTalentButton.Click += new System.EventHandler(this.searchTalentButton_Click);
             // 
+            // refreshWikiButton
+            // 
+            this.refreshWikiButton.Location = new System.Drawing.Point(1066, 3);
+            this.refreshWikiButton.Name = "refreshWikiButton";
+            this.refreshWikiButton.Size = new System.Drawing.Size(129, 23);
+            this.refreshWikiButton.TabIndex = 9;
+            this.refreshWikiButton.Text = "Refresh Data from Wiki";
+            this.refreshWikiButton.UseVisualStyleBackColor = true;
+            this.refreshWikiButton.Click += new System.EventHandler(this.refreshWikiButton_Click);
+            // 
             // Menu_Control
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.refreshWikiButton);
             this.Controls.Add(this.searchTalentButton);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -157,5 +169,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button searchTalentButton;
+        private System.Windows.Forms.Button refreshWikiButton;
     }
 }

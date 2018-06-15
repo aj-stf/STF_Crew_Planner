@@ -36,6 +36,11 @@ namespace STF_CharacterPlanner
         public void UpdateTalents(DataTable SelectedJobs, Int32 talent_points)
         {
             TalentList.Clear();
+            DataTable savedDT = new DataTable();
+            if (selectedTalentTable.Rows.Count > 0)
+            {
+                savedDT = selectedTalentTable.Copy();
+            }
             availableTalentBox.Items.Clear();
             TalentDataTable.Rows.Clear();
             selectedTalentTable.Rows.Clear();
@@ -112,7 +117,6 @@ namespace STF_CharacterPlanner
 
             if (tblFiltered1.Rows.Count > 0)
             {
-                //TalentDataTable = tblFiltered1.AsEnumerable().OrderBy(row => row.Field<Int32>("Rank")).CopyToDataTable();
                 TalentDataTable = tblFiltered1.AsEnumerable().OrderBy(row => row.Field<string>("Job")).CopyToDataTable();
             }
             
@@ -122,6 +126,28 @@ namespace STF_CharacterPlanner
                 UpdateTalentBox();
             }
             UpdateTalentNums();
+            if (savedDT.Rows.Count > 0 && TalentDataTable.Rows.Count > 0)
+            {
+                var selectedItemsList = new List<Int32>();
+                foreach(DataRow dr in savedDT.Rows)
+                {
+                    string theName = dr.Field<string>("Name");
+                    foreach (var item in availableTalentBox.Items)
+                    {
+                        for (int x = 0;x < availableTalentBox.Items.Count; x++)
+                        {
+                            if (availableTalentBox.Items[x].ToString().Contains(theName))
+                            {
+                                selectedItemsList.Add(x);
+                            }
+                        }
+                    }
+                }
+                foreach(Int32 theNum in selectedItemsList)
+                {
+                    availableTalentBox.SetSelected(theNum, true);
+                }
+            }
         }
         public void UpdateTalentNums()
         {
@@ -136,6 +162,7 @@ namespace STF_CharacterPlanner
                 var snglTab = "\t";
                 var dblTab = "\t\t";
                 var trpTab = "\t\t\t";
+
                 var JobName = dr.Field<string>("Job");
                 var Type = dr.Field<string>("Type");
                 var Name = dr.Field<string>("Name");

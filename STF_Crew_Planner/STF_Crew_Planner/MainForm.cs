@@ -25,11 +25,15 @@ namespace STF_CharacterPlanner
             bridgeMember3.setWhichOfficer("Second Officer");
             bridgeMember4.setWhichOfficer("Third Officer");
             bridgeMember5.setWhichOfficer("Fourth Officer");
+            bridgeMember6.setWhichOfficer("Fifth Officer");
+            bridgeMember7.setWhichOfficer("Sixth Officer");
             stf_Data.setBridgeMember1(bridgeMember1);
-            stf_Data.setBridgeMember2(bridgeMember1);
-            stf_Data.setBridgeMember3(bridgeMember1);
-            stf_Data.setBridgeMember4(bridgeMember1);
-            stf_Data.setBridgeMember5(bridgeMember1);
+            stf_Data.setBridgeMember2(bridgeMember2);
+            stf_Data.setBridgeMember3(bridgeMember3);
+            stf_Data.setBridgeMember4(bridgeMember4);
+            stf_Data.setBridgeMember5(bridgeMember5);
+            stf_Data.setBridgeMember4(bridgeMember6);
+            stf_Data.setBridgeMember5(bridgeMember7);
         }
         public void resetCrewForms()
         {
@@ -38,6 +42,8 @@ namespace STF_CharacterPlanner
             bridgeMember3.resetTheBridge();
             bridgeMember4.resetTheBridge();
             bridgeMember5.resetTheBridge();
+            bridgeMember6.resetTheBridge();
+            bridgeMember7.resetTheBridge();
             menu_Control1.SetGroupName("");
         }
         public void createNewTextFile()
@@ -55,6 +61,13 @@ namespace STF_CharacterPlanner
             var NewTemplateSave = new SaveLoadHandler();
             resetCrewForms();
             NewTemplateSave.LoadCrewTemplate(this);
+        }
+        public void RefreshDataFromWiki()
+        { 
+        }
+        public void RefreshDataFromWiki_ShipData()
+        {
+
         }
     }
 }

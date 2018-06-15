@@ -31,7 +31,7 @@ namespace STF_CharacterPlanner
 
             if (NewTalents.Rows.Count > 0)
             {
-                orderedTable = NewTalents.AsEnumerable().OrderBy(row => row.Field<Int32>("Rank")).CopyToDataTable();
+                orderedTable = NewTalents.AsEnumerable().OrderBy(row => row.Field<String>("Job")).CopyToDataTable();
             }
             foreach (DataRow dr in orderedTable.Rows)
             {

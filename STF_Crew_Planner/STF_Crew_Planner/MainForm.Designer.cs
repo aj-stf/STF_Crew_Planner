@@ -34,6 +34,8 @@
             this.bridgeMember3 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember2 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember1 = new STF_CharacterPlanner.BridgeMember();
+            this.bridgeMember6 = new STF_CharacterPlanner.BridgeMember();
+            this.bridgeMember7 = new STF_CharacterPlanner.BridgeMember();
             this.SuspendLayout();
             // 
             // menu_Control1
@@ -85,6 +87,22 @@
             this.bridgeMember1.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember1.TabIndex = 0;
             // 
+            // bridgeMember6
+            // 
+            this.bridgeMember6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.bridgeMember6.Location = new System.Drawing.Point(3, 936);
+            this.bridgeMember6.Name = "bridgeMember6";
+            this.bridgeMember6.Size = new System.Drawing.Size(1260, 158);
+            this.bridgeMember6.TabIndex = 6;
+            // 
+            // bridgeMember7
+            // 
+            this.bridgeMember7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.bridgeMember7.Location = new System.Drawing.Point(3, 1100);
+            this.bridgeMember7.Name = "bridgeMember7";
+            this.bridgeMember7.Size = new System.Drawing.Size(1260, 158);
+            this.bridgeMember7.TabIndex = 7;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -92,6 +110,8 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ClientSize = new System.Drawing.Size(1284, 761);
+            this.Controls.Add(this.bridgeMember7);
+            this.Controls.Add(this.bridgeMember6);
             this.Controls.Add(this.menu_Control1);
             this.Controls.Add(this.bridgeMember5);
             this.Controls.Add(this.bridgeMember4);
@@ -112,6 +132,8 @@
         public BridgeMember bridgeMember4;
         public BridgeMember bridgeMember5;
         public Menu_Control menu_Control1;
+        public BridgeMember bridgeMember6;
+        public BridgeMember bridgeMember7;
     }
 }
 

@@ -47,7 +47,12 @@ namespace STF_CharacterPlanner
         {
             DataTable newTable = new DataTable();
             newTable = officerControl1.getSelectedJobsTable();
-            return newTable;
+            var filteredTable = new DataTable();
+            if (newTable.Rows.Count > 0)
+            {
+                filteredTable = newTable.AsEnumerable().OrderBy(row => row.Field<string>("Job")).CopyToDataTable();
+            }
+            return filteredTable;
         }
         public List<string> returnSkillsList()
         {
@@ -68,7 +73,7 @@ namespace STF_CharacterPlanner
             DataTable filteredTable = newTable.Clone();
             if (newTable.Rows.Count > 0)
             {
-                filteredTable = newTable.AsEnumerable().OrderBy(row => row.Field<Int32>("Rank")).CopyToDataTable();
+                filteredTable = newTable.AsEnumerable().OrderBy(row => row.Field<string>("Job")).CopyToDataTable();
             }
             
 

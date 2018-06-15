@@ -273,6 +273,7 @@ namespace STF_CharacterPlanner
                         jobBox3.Items.Add(jobToAdd);
                     }
                 }
+                
             }
         }
         private void populateFirstRankBox()
@@ -333,6 +334,7 @@ namespace STF_CharacterPlanner
 
             if (item == null)
                 return;
+            
             Job1 = item.ToString();
             populateBoxes();
         }
@@ -344,6 +346,15 @@ namespace STF_CharacterPlanner
 
             if (item == null)
                 return;
+            if (item.ToString().Equals("None"))
+            {
+                jobBox2.SelectedIndex = -1;
+                rankJob2.SelectedIndex = -1;
+                Job2 = "";
+                Rank2 = 0;
+                populateBoxes();
+                return;
+            }
             Job2 = item.ToString();
             populateBoxes();
         }
@@ -354,6 +365,15 @@ namespace STF_CharacterPlanner
 
             if (item == null)
                 return;
+            if (item.ToString().Equals("None"))
+            {
+                jobBox3.SelectedIndex = -1;
+                rankJob3.SelectedIndex = -1;
+                Job3 = "";
+                Rank3 = 0;
+                populateBoxes();
+                return;
+            }
             Job3 = item.ToString();
             populateBoxes();
         }
