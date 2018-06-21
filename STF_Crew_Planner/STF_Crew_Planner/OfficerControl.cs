@@ -186,6 +186,8 @@ namespace STF_CharacterPlanner
 
             BridgeMember myParent = (this.Parent as BridgeMember);
             myParent.updateSkillShow(SelectedJobs, availableTalents);
+            MainForm theForm = (myParent.Parent as MainForm);
+            theForm.shipCrewAndDiceControl1.UpdateCrewSkills();
         }
         private void populateFirstJobBox()
         {
@@ -334,7 +336,15 @@ namespace STF_CharacterPlanner
 
             if (item == null)
                 return;
-            
+            if (item.ToString().Equals("None"))
+            {
+                jobBox1.SelectedIndex = -1;
+                rankJob1.SelectedIndex = -1;
+                Job1 = "";
+                Rank1 = 0;
+                populateBoxes();
+                return;
+            }
             Job1 = item.ToString();
             populateBoxes();
         }

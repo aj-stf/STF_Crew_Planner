@@ -1,0 +1,33 @@
+Ship:Current Mass:Max Mass:Price:Total Slots:Large:Mid:Small:Hull:Armour:Shield:Max Officers:Max Crew:Cargo:Engine:Speed:Agility:Fuel Cost:Fuel Tank:Fuel Range:Jump Cost:Pilot:Navigation:Ship Ops:Electronics:Gunnery:Tier
+ Juror Class:3345:3400:$160.0k:15:2:3:10:1100:10:10:4:24:25:M3400 Void Engine-Balanced:24:24:2:95:47:21:11:13:20:11:15:2
+ Paladin Cruiser:4990:5000:$260.0k:19:4:5:10:1500:8:7:5:30:50:M5000 Void Engine-Balanced:19:19:2:195:97:24:14:17:28:18:20:3
+ Fidelis Cutter:5835:6000:$375.0k:23:4:7:12:2000:7:8:5:30:50:M6000 Void Engine-Balanced:15:15:3:140:46:33:24:30:32:32:17:3
+ Scout Cutter:2320:2400:$190.0k:13:2:3:8:900:12:12:3:18:35:M2400 Void Engine-Balanced:27:27:2:120:60:16:9:9:18:11:12:1
+ Cautela Heavylift:6595:7000:$575.0k:23:4:7:12:2500:5:4:6:36:35:M7000 Void Engine-Balanced:12:12:4:170:42:34:24:26:32:29:29:4
+ Dragoon Cruiser:6570:7000:$580.0k:23:4:7:12:2350:5:4:6:36:35:M7000 Void Engine-Balanced:12:12:4:180:45:31:24:26:34:27:33:4
+ Frontier Liner:4635:5000:$240.0k:18:3:5:10:1400:7:8:5:30:50:M5000 Void Engine-Balanced:19:19:2:135:67:22:14:17:27:14:29:3
+ Guardian Interceptor:5870:6000:$375.0k:23:4:7:12:1950:6:6:5:30:50:M6000 Void Engine-Balanced:15:15:3:140:46:30:24:30:36:29:24:3
+ Broadsword Class:7670:8000:$850.0k:29:7:9:13:2600:5:3:7:42:60:M8000 Void Engine-Balanced:9:9:4:235:58:50:26:28:50:38:33:5
+ Galtak Freighter:4920:5000:$260.0k:19:4:3:12:1600:8:5:5:30:75:M5000 Void Engine-Balanced:19:19:2:150:75:23:14:21:27:16:22:3
+ Lightbow Raptor:3320:3400:$230.0k:16:2:5:9:1200:12:10:4:24:25:M3400 Void Engine-Balanced:24:24:2:65:32:25:11:13:21:12:16:2
+ Longbow Cruiser:4770:5000:$350.0k:21:4:6:11:1500:9:8:5:30:50:M5000 Void Engine-Balanced:19:19:2:145:72:32:14:17:32:16:27:3
+ Raptor Class:5910:6000:$485.0k:23:4:8:11:1600:2:10:6:36:50:M6000 Void Engine-Balanced:15:15:3:200:66:30:24:30:34:34:22:4
+ Solar Predator:4860:5000:$340.0k:20:4:5:11:1950:7:9:5:30:50:M5000 Void Engine-Balanced:19:19:2:160:80:32:14:17:35:16:24:4
+ Vengeance Class:5990:6000:$500.0k:24:5:6:13:2350:8:3:6:36:25:M6000 Void Engine-Balanced:15:15:3:85:28:46:24:30:37:32:23:4
+ Warhammer Class:7825:8000:$1.1m:30:7:11:12:2500:3:9:7:42:60:M8000 Void Engine-Balanced:9:9:4:125:31:73:26:28:53:35:29:5
+ Dart Jammer:3195:3400:$185.0k:16:2:3:11:1000:15:8:5:30:25:M3400 Void Engine-Balanced:24:24:2:85:42:21:11:17:21:13:15:3
+ Stellar Falcon:5915:6000:$500.0k:23:4:6:13:2050:5:9:5:30:25:M6000 Void Engine-Balanced:15:15:3:115:38:32:24:30:31:31:25:3
+ Hammerhead Jammer:4990:5000:$325.0k:19:4:5:10:2000:8:5:5:30:50:M5000 Void Engine-Balanced:19:19:2:130:65:29:14:17:29:17:20:3
+ Sword Battlecruiser:8980:9000:$1.2m:32:6:12:14:2100:9:7:7:42:60:M9000 Void Engine-Balanced:9:9:4:205:51:63:30:28:52:35:38:5
+ Cautela Titan:8755:9000:$1.3m:30:6:12:12:2700:7:4:7:42:60:M9000 Void Engine-Balanced:9:9:4:250:62:63:26:28:49:35:34:5
+ Strikecruiser:3380:3400:$375.0k:17:3:4:10:1250:12:10:4:24:25:M3400 Void Engine-Balanced:24:24:2:115:57:37:12:14:26:13:20:2
+ Paladin Defender:4990:5000:$340.0k:19:4:5:10:1500:12:6:5:30:50:M5000 Void Engine-Balanced:19:19:2:110:55:29:14:17:29:17:20:3
+ Callus Freighter:3195:3400:$300.0k:18:3:4:11:1500:5:12:5:30:25:M3400 Void Engine-Chaser:29:24:2:90:45:39:13:14:24:13:16:3
+ Vrax Hauler:4990:5000:$340.0k:21:4:7:10:1000:12:12:5:30:50:M5000 Void Engine-Traveler:16:23:3:180:60:34:13:17:34:18:24:3
+ Paladin Cutter:4915:5000:$320.0k:21:4:5:12:1600:7:11:5:30:50:M5000 Void Engine-Balanced:19:19:2:120:60:31:14:17:30:17:20:3
+ Vulture Liner:3255:3400:$325.0k:16:2:3:11:1000:8:12:4:24:25:M3400 Void Engine-Balanced:24:24:2:125:62:23:10:11:23:11:23:2
+ Allistar Liner:2320:2400:$340.0k:15:2:3:10:1000:10:14:4:24:35:M2400 Void Engine-Balanced:27:27:2:155:77:18:8:7:20:11:21:2
+ Bolt Raptor:3395:3400:$400.0k:18:2:4:12:1050:11:12:5:24:25:M3400 Void Engine-Balanced:24:24:2:120:60:25:14:11:24:11:20:2
+ Dart Liner:3370:3400:$327.0k:17:2:3:12:950:10:15:5:24:25:M3400 Void Engine-Chaser:29:24:2:85:42:24:11:15:20:13:19:2
+ Volk Frigate:2385:2400:$320.0k:16:2:3:11:1350:5:12:5:24:35:M2400 Void Engine-Balanced:27:27:2:105:52:18:8:7:19:11:21:2
+ Galtak Heavylift:4995:5000:$345.0k:21:5:5:11:1500:7:7:5:30:75:M5000 Void Engine-Balanced:19:19:2:170:85:25:14:25:30:18:20:3

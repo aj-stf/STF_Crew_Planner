@@ -87,6 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(177)))), ((int)(((byte)(213)))), ((int)(((byte)(241)))));
             this.label2.Location = new System.Drawing.Point(4, 27);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 13);

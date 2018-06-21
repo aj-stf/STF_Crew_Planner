@@ -14,12 +14,17 @@ namespace STF_CharacterPlanner
     public partial class MainForm : Form
     {
         public DataStorage stf_Data;
+        public List<DataStorage.CrewDataStruct> theCrew;
+        public DataStorage.SelectedShip theShip;
 
         public MainForm()
         {
             InitializeComponent();
             stf_Data = DataStorage.Instance;
             stf_Data.InstatiateTables();
+            theCrew = new List<DataStorage.CrewDataStruct>();
+            theShip = new DataStorage.SelectedShip();
+            theShip.isSet = false;
             bridgeMember1.setWhichOfficer("Captain");
             bridgeMember2.setWhichOfficer("First Officer");
             bridgeMember3.setWhichOfficer("Second Officer");
@@ -45,6 +50,10 @@ namespace STF_CharacterPlanner
             bridgeMember6.resetTheBridge();
             bridgeMember7.resetTheBridge();
             menu_Control1.SetGroupName("");
+            theShip = new DataStorage.SelectedShip();
+            theShip.isSet = false;
+            theCrew = new List<DataStorage.CrewDataStruct>();
+            shipCrewAndDiceControl1.UpdateCrewSkills();
         }
         public void createNewTextFile()
         {

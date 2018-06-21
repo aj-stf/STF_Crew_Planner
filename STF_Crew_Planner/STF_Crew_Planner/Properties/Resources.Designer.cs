@@ -87,11 +87,28 @@ namespace STF_CharacterPlanner.Properties {
         ///Sniper:No
         ///Spy:Yes
         ///Swordsman:No
-        ///Zealot:Yes.
+        ///Zealot:Yes
+        ///None:No.
         /// </summary>
         internal static string job_list {
             get {
                 return ResourceManager.GetString("job_list", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:Size:Mass:Pilot:Ship Ops:Gunnery:Electronics:Navigation:Cargo:Crew:Officer:Armor:Shield:Jump:Fuel:Guest:Prison:Medical
+        ///Adv. Mass Dampener 1:Medium:-300:0:4:0:0:0:0:0:0:0:0:0:0:0:0:0
+        ///Adv. Mass Dampener 2:Medium:-330:0:4:0:2:0:0:0:0:0:0:0:0:0:0:0
+        ///Adv. Mass Dampener 3:Medium:-360:0:5:0:1:0:0:0:0:0:0:0:0:0:0:0
+        ///Adv. Mass Dampener 4:Medium:-400:0:5:0:2:0:0:0:0:0:0:0:0:0:0:0
+        ///Aramech Missile Pod:Small:125:0:2:7:1:0:0:0:0:0:0:0:0:0:0:0
+        ///Aramech X2 Missile Battery:Small:125:0:2:11:1:0:0:0:0:0:0:0:0:0:0:0
+        ///A [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string ship_components {
+            get {
+                return ResourceManager.GetString("ship_components", resourceCulture);
             }
         }
         
@@ -134,7 +151,7 @@ namespace STF_CharacterPlanner.Properties {
         ///9:Blades:6:Evasion:1:Stealth:7:Assassin
         ///10:Blades:6:Evasion:1:Stealth:8:Assassin
         ///11:Blades:7:Evasion:2:Stealth:8:Assassin
-        ///12:Blades: [rest of string was truncated]&quot;;.
+        ///12:Blades:7:Evasion:3: [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string skill_per_job_list {
             get {
@@ -143,11 +160,50 @@ namespace STF_CharacterPlanner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ship,Current Mass,Max Mass,Price,Total Slots,Large,Mid,Small,Hull,Armour,Shield,Max Officers,Max Crew,Cargo,Engine,Speed,Agility,Fuel Cost,Fuel Tank,Fuel Range,Jump Cost,Pilot,Navigation,Ship Ops,Electronics,Gunnery
+        /// Juror Class:3345:3400:$160.0k:15:2:3:10:1100:10:10:4:24:25:M3400 Void Engine-Balanced:24:24:2:95:47:21:11:13:20:11:15
+        /// Paladin Cruiser:4990:5000:$260.0k:19:4:5:10:1500:8:7:5:30:50:M5000 Void Engine-Balanced:19:19:2:195:97:24:14:17:28:18:20
+        /// Fidelis Cutter:5835:6000:$375.0k:23:4:7:12:2000:7:8:5: [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string STF_Ship_Data {
+            get {
+                return ResourceManager.GetString("STF_Ship_Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ship,Component
+        ///Juror Class:M3400 Void Engine-Balanced
+        ///Juror Class:Barracks 3
+        ///Juror Class:Officer Cabin
+        ///Juror Class:Cargo Hold 1
+        ///Juror Class:Passenger Cabin
+        ///Juror Class:Bridge
+        ///Juror Class:M3400 Hyperwarp
+        ///Juror Class:Light Railgun
+        ///Juror Class:Hellfire Torpedo
+        ///Juror Class:Weapons Locker A1
+        ///Juror Class:Officer Cabin
+        ///Juror Class:Armored Bulkheads
+        ///Juror Class:Hellfire Torpedo
+        ///Juror Class:Phoenix Lance
+        ///Juror Class:Officer Cabin
+        ///Paladin Cruiser:M5000 Void Engine-Balanced
+        ///Paladin Cruiser:Officer Cabin
+        ///Paladin Cruise [rest of string was truncated]&quot;;.
+        /// </summary>
+        internal static string STF_Ship_Default_Comp {
+            get {
+                return ResourceManager.GetString("STF_Ship_Default_Comp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name:Rank:Description:Cooldown:Job:Type
         ///Expert Planning:1:Automatically passes a failed Tactics test in any situation, including on patrol, deep space travel, or during a mission:3 weeks Cooldown:Military Officer:Skill Save
         ///Power Play:1:When completing steps in a Mission, increase Faction Reputation bonuses by Charisma %:3 weeks Cooldown:Military Officer:Reputation
         ///Militant Patrol:1:When Patrolling a system, increase rewards by 10% + Command Skill:3 weeks Cooldown:Military Officer:Patrol
-        ///Stiff Salute:1: [rest of string was truncated]&quot;;.
+        ///Stiff Salute:1:When [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string stf_talent_job {
             get {

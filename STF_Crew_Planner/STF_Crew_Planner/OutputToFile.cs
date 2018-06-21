@@ -104,6 +104,16 @@ namespace STF_CharacterPlanner
                 var Officer1_String = CombinedCharacterString(Jobs7, SelectedTalents7, SkillsList7, theForm.bridgeMember7.whichOfficer);
                 SaveMyFileBro += Officer1_String;
             }
+            if (theForm.theCrew.Count > 0)
+            {
+                var myString = ReturnCrewString(theForm.theCrew);
+                SaveMyFileBro += myString;
+            }
+            if (theForm.theShip.isSet)
+            {
+                var myString = ReturnShipString(theForm.theShip);
+                SaveMyFileBro += myString;
+            }
 
             ShalunSaves(SaveMyFileBro, GroupName);
         }
@@ -235,6 +245,146 @@ namespace STF_CharacterPlanner
 
             string displayRowString = Rank.ToString() + sT + Name + firstTab + JobName + secondTab + Type;
             return displayRowString;
+        }
+        private string ReturnShipString(DataStorage.SelectedShip theShip)
+        {
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String fiT = "\t\t\t\t\t";
+            string rC = "\n";
+            var myString = "";
+            myString += "================================================================" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "Ship Readout" + rC;
+            myString += "---------------------------------------------------" + rC;
+            if (theShip.Ship.Rows.Count > 0)
+            {
+                foreach (DataRow dr in theShip.Ship.Rows)
+                {
+                    for (int x = 0; x < theShip.Ship.Columns.Count; x++)
+                    {
+                        var colName = theShip.Ship.Columns[x].ColumnName;
+                        var aString = dr[x].ToString();
+                        var shipString = ShipRowString(colName, aString);
+                        if (colName.Equals("Tier"))
+                        {
+
+                        }
+                        else
+                        {
+                            myString += shipString + rC;
+                        }
+                    }
+                }
+            }
+            myString += "---------------------------------------------------" + rC;
+            myString += "Ship Components" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "-------------------------------------------" + rC;
+            myString += "Large Components" + rC;
+            myString += "-------------------------------------------" + rC;
+            foreach (DataRow dr in theShip.Components.Large.Rows)
+            {
+                var aString = dr[0].ToString();
+                myString += aString + rC;
+            }
+            myString += "-------------------------------------------" + rC;
+            myString += "Medium Components" + rC;
+            myString += "-------------------------------------------" + rC;
+            foreach (DataRow dr in theShip.Components.Medium.Rows)
+            {
+                var aString = dr[0].ToString();
+                myString += aString + rC;
+            }
+            myString += "-------------------------------------------" + rC;
+            myString += "Small Components" + rC;
+            myString += "-------------------------------------------" + rC;
+            foreach (DataRow dr in theShip.Components.Small.Rows)
+            {
+                var aString = dr[0].ToString();
+                myString += aString + rC;
+            }
+            myString += "================================================================" + rC;
+
+            return myString;
+        }
+        private string ShipRowString(string NameString, string ValueString)
+        {
+            var snglTab = "\t";
+            var dblTab = "\t\t";
+            var trpTab = "\t\t\t";
+            var myString = "";
+            if (NameString.Length > 15)
+            {
+                myString = NameString + ":" + snglTab + ValueString;
+            }
+            else if (NameString.Length > 6)
+            {
+                myString = NameString + ":" + snglTab + ValueString;
+            }
+            else
+            {
+                myString = NameString + ":" + dblTab + ValueString;
+            }
+
+            return myString;
+        }
+        private string ReturnCrewString(List<DataStorage.CrewDataStruct> theCrew)
+        {
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String fiT = "\t\t\t\t\t";
+            string rC = "\n";
+            var myString = "";
+            myString += "================================================================" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "Crew Manifest" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "Job" + fiT + "Num" + dT + "Rank" + rC;
+            foreach (DataStorage.CrewDataStruct member in theCrew)
+            {
+                if (member.Num > 0)
+                {
+                    var aString = CrewRowString(member);
+                    myString += aString + rC;
+                }
+            }
+            return myString;
+        }
+        private string CrewRowString(DataStorage.CrewDataStruct aCrew)
+        {
+            var snglTab = "\t";
+            var dblTab = "\t\t";
+            var trpTab = "\t\t\t";
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String fiT = "\t\t\t\t\t";
+
+            var myString = "";
+            if (aCrew.Job.Length > 15)
+            {
+                myString = aCrew.Job + snglTab + aCrew.Num + dblTab + aCrew.Rank;
+            }
+            else if (aCrew.Job.Length > 11)
+            {
+                myString = aCrew.Job + dblTab + aCrew.Num + dblTab + aCrew.Rank;
+            }
+            else if (aCrew.Job.Length > 7)
+            {
+                myString = aCrew.Job + trpTab + aCrew.Num + dblTab + aCrew.Rank;
+            }
+            else
+            {
+                myString = aCrew.Job + fT + aCrew.Num + dblTab + aCrew.Rank;
+            }
+
+            return myString;
         }
     }
 }

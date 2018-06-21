@@ -28,15 +28,40 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.shipCrewAndDiceControl1 = new STF_CharacterPlanner.ShipCrewAndDiceControl();
+            this.bridgeMember7 = new STF_CharacterPlanner.BridgeMember();
+            this.bridgeMember6 = new STF_CharacterPlanner.BridgeMember();
             this.menu_Control1 = new STF_CharacterPlanner.Menu_Control();
             this.bridgeMember5 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember4 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember3 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember2 = new STF_CharacterPlanner.BridgeMember();
             this.bridgeMember1 = new STF_CharacterPlanner.BridgeMember();
-            this.bridgeMember6 = new STF_CharacterPlanner.BridgeMember();
-            this.bridgeMember7 = new STF_CharacterPlanner.BridgeMember();
             this.SuspendLayout();
+            // 
+            // shipCrewAndDiceControl1
+            // 
+            this.shipCrewAndDiceControl1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.shipCrewAndDiceControl1.Location = new System.Drawing.Point(3, 116);
+            this.shipCrewAndDiceControl1.Name = "shipCrewAndDiceControl1";
+            this.shipCrewAndDiceControl1.Size = new System.Drawing.Size(1260, 158);
+            this.shipCrewAndDiceControl1.TabIndex = 8;
+            // 
+            // bridgeMember7
+            // 
+            this.bridgeMember7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.bridgeMember7.Location = new System.Drawing.Point(3, 1264);
+            this.bridgeMember7.Name = "bridgeMember7";
+            this.bridgeMember7.Size = new System.Drawing.Size(1260, 158);
+            this.bridgeMember7.TabIndex = 7;
+            // 
+            // bridgeMember6
+            // 
+            this.bridgeMember6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.bridgeMember6.Location = new System.Drawing.Point(3, 1100);
+            this.bridgeMember6.Name = "bridgeMember6";
+            this.bridgeMember6.Size = new System.Drawing.Size(1260, 158);
+            this.bridgeMember6.TabIndex = 6;
             // 
             // menu_Control1
             // 
@@ -50,7 +75,7 @@
             // bridgeMember5
             // 
             this.bridgeMember5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember5.Location = new System.Drawing.Point(3, 772);
+            this.bridgeMember5.Location = new System.Drawing.Point(3, 936);
             this.bridgeMember5.Name = "bridgeMember5";
             this.bridgeMember5.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember5.TabIndex = 4;
@@ -58,7 +83,7 @@
             // bridgeMember4
             // 
             this.bridgeMember4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember4.Location = new System.Drawing.Point(3, 608);
+            this.bridgeMember4.Location = new System.Drawing.Point(3, 772);
             this.bridgeMember4.Name = "bridgeMember4";
             this.bridgeMember4.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember4.TabIndex = 3;
@@ -66,7 +91,7 @@
             // bridgeMember3
             // 
             this.bridgeMember3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember3.Location = new System.Drawing.Point(3, 444);
+            this.bridgeMember3.Location = new System.Drawing.Point(3, 608);
             this.bridgeMember3.Name = "bridgeMember3";
             this.bridgeMember3.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember3.TabIndex = 2;
@@ -74,7 +99,7 @@
             // bridgeMember2
             // 
             this.bridgeMember2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember2.Location = new System.Drawing.Point(3, 280);
+            this.bridgeMember2.Location = new System.Drawing.Point(3, 444);
             this.bridgeMember2.Name = "bridgeMember2";
             this.bridgeMember2.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember2.TabIndex = 1;
@@ -82,26 +107,10 @@
             // bridgeMember1
             // 
             this.bridgeMember1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember1.Location = new System.Drawing.Point(3, 116);
+            this.bridgeMember1.Location = new System.Drawing.Point(3, 280);
             this.bridgeMember1.Name = "bridgeMember1";
             this.bridgeMember1.Size = new System.Drawing.Size(1260, 158);
             this.bridgeMember1.TabIndex = 0;
-            // 
-            // bridgeMember6
-            // 
-            this.bridgeMember6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember6.Location = new System.Drawing.Point(3, 936);
-            this.bridgeMember6.Name = "bridgeMember6";
-            this.bridgeMember6.Size = new System.Drawing.Size(1260, 158);
-            this.bridgeMember6.TabIndex = 6;
-            // 
-            // bridgeMember7
-            // 
-            this.bridgeMember7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
-            this.bridgeMember7.Location = new System.Drawing.Point(3, 1100);
-            this.bridgeMember7.Name = "bridgeMember7";
-            this.bridgeMember7.Size = new System.Drawing.Size(1260, 158);
-            this.bridgeMember7.TabIndex = 7;
             // 
             // MainForm
             // 
@@ -110,6 +119,7 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(100)))), ((int)(((byte)(158)))));
             this.ClientSize = new System.Drawing.Size(1284, 761);
+            this.Controls.Add(this.shipCrewAndDiceControl1);
             this.Controls.Add(this.bridgeMember7);
             this.Controls.Add(this.bridgeMember6);
             this.Controls.Add(this.menu_Control1);
@@ -119,7 +129,7 @@
             this.Controls.Add(this.bridgeMember2);
             this.Controls.Add(this.bridgeMember1);
             this.Name = "MainForm";
-            this.Text = "STF Crew Planner v0.12";
+            this.Text = "Star Traders: Frontiers Planner v0.15";
             this.ResumeLayout(false);
 
         }
@@ -134,6 +144,7 @@
         public Menu_Control menu_Control1;
         public BridgeMember bridgeMember6;
         public BridgeMember bridgeMember7;
+        public ShipCrewAndDiceControl shipCrewAndDiceControl1;
     }
 }
 

@@ -61,6 +61,48 @@
     <Compile Include="BridgeMember.Designer.cs">
       <DependentUpon>BridgeMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrowseCompsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseCompsForm.Designer.cs">
+      <DependentUpon>BrowseCompsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrowseShipsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseShipsForm.Designer.cs">
+      <DependentUpon>BrowseShipsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CompBrowser.Designer.cs">
+      <DependentUpon>CompBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ComponentSelect.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ComponentSelect.Designer.cs">
+      <DependentUpon>ComponentSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigureCrewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureCrewForm.Designer.cs">
+      <DependentUpon>ConfigureCrewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigureShipForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigureShipForm.Designer.cs">
+      <DependentUpon>ConfigureShipForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrewInput.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CrewInput.Designer.cs">
+      <DependentUpon>CrewInput.cs</DependentUpon>
+    </Compile>
     <Compile Include="ImportData.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -96,6 +138,30 @@
     <Compile Include="SelectedTalents.Designer.cs">
       <DependentUpon>SelectedTalents.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShipBrowser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShipBrowser.Designer.cs">
+      <DependentUpon>ShipBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipConfigureMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShipConfigureMenu.Designer.cs">
+      <DependentUpon>ShipConfigureMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipCrewAndDiceControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShipCrewAndDiceControl.Designer.cs">
+      <DependentUpon>ShipCrewAndDiceControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShipCrewMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShipCrewMenu.Designer.cs">
+      <DependentUpon>ShipCrewMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="TalentMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -119,6 +185,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BridgeMember.resx">
       <DependentUpon>BridgeMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowseCompsForm.resx">
+      <DependentUpon>BrowseCompsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowseShipsForm.resx">
+      <DependentUpon>BrowseShipsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompBrowser.resx">
+      <DependentUpon>CompBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ComponentSelect.resx">
+      <DependentUpon>ComponentSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigureCrewForm.resx">
+      <DependentUpon>ConfigureCrewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigureShipForm.resx">
+      <DependentUpon>ConfigureShipForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrewInput.resx">
+      <DependentUpon>CrewInput.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -145,6 +232,18 @@
     <EmbeddedResource Include="SelectedTalents.resx">
       <DependentUpon>SelectedTalents.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShipBrowser.resx">
+      <DependentUpon>ShipBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipConfigureMenu.resx">
+      <DependentUpon>ShipConfigureMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipCrewAndDiceControl.resx">
+      <DependentUpon>ShipCrewAndDiceControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShipCrewMenu.resx">
+      <DependentUpon>ShipCrewMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TalentMenu.resx">
       <DependentUpon>TalentMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,8 +264,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Resources\job_list.csv" />
+    <None Include="Resources\ship components.csv" />
     <None Include="Resources\skill_list.csv" />
     <None Include="Resources\skill_per_job_list.csv" />
+    <None Include="Resources\STF_Ship_Data.csv" />
+    <None Include="Resources\STF_Ship_Default_Comp.csv" />
     <None Include="Resources\stf_talent_job.csv" />
     <None Include="Resources\talent_points.csv" />
   </ItemGroup>

@@ -272,6 +272,7 @@ namespace STF_CharacterPlanner
         {
             foreach (DataRow dr in NewTalentChoices.Rows)
             {
+                //Console.WriteLine(dr[0].ToString());
                 var myString = dr.Field<string>("Name");
                 TalentSelectRow(myString, availableTalentBox);
             }

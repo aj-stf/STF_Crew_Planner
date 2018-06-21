@@ -26,6 +26,9 @@ namespace STF_CharacterPlanner
         public DataTable secondOfficerInfo;
         public DataTable thirdOfficerInfo;
         public DataTable fourthOfficerInfo;
+        public DataTable STF_Ship_Data;
+        public DataTable STF_Ship_Defaults;
+        public DataTable STF_Ship_Components;
         public BridgeMember member1;
         public BridgeMember member2;
         public BridgeMember member3;
@@ -34,6 +37,25 @@ namespace STF_CharacterPlanner
 
         private DataStorage()
         {
+        }
+        public struct CrewDataStruct
+        {
+            public string Job;
+            public int Num;
+            public int Rank;
+        }
+        public struct SelectedComponents
+        {
+            public DataTable Small;
+            public DataTable Medium;
+            public DataTable Large;
+        }
+        public struct SelectedShip
+        {
+            public SelectedComponents Components;
+            public DataTable Ship;
+            public string Name;
+            public bool isSet;
         }
 
         public void InstatiateTables()
@@ -45,17 +67,63 @@ namespace STF_CharacterPlanner
             skill_per_job_table = loadDataFromCSV(Properties.Resources.skill_per_job_list);
             stf_talent_job_table = loadDataFromCSV(Properties.Resources.stf_talent_job);
             talent_points_table = loadDataFromCSV(Properties.Resources.talent_points);
+            STF_Ship_Data = loadDataFromCSV(Properties.Resources.STF_Ship_Data);
+            STF_Ship_Defaults = loadDataFromCSV(Properties.Resources.STF_Ship_Default_Comp);
+            STF_Ship_Components = loadDataFromCSV(Properties.Resources.ship_components);
             //Create Job Lists
             job_list = CreateJobList(job_table);
             capt_job_list = CreateCaptJobList(job_table);
 
 
             //Reconfigure integer rows
+            SetShipDataTablesToInt();
+            SetCompDataTablesToInt();
             ChangeColumnType(stf_talent_job_table, "Rank", typeof(int));
             ChangeColumnType(skill_per_job_table, "Rank", typeof(int));
             ChangeColumnType(skill_per_job_table, "1-Num", typeof(int));
             ChangeColumnType(skill_per_job_table, "2-Num", typeof(int));
             ChangeColumnType(skill_per_job_table, "3-Num", typeof(int));
+        }
+        public void SetShipDataTablesToInt()
+        {
+            var STF_Ship_List = new List<string>();
+            foreach (DataColumn theColumn in STF_Ship_Data.Columns)
+            {
+                string columnName = theColumn.ColumnName.ToString();
+                if (columnName.Equals("Ship") || columnName.Equals("Price") || columnName.Equals("Engine"))
+                {
+
+                }else
+                {
+                    STF_Ship_List.Add(columnName);
+                }
+            }
+            foreach (var theString in STF_Ship_List)
+            {
+                ChangeColumnType(STF_Ship_Data, theString, typeof(int));
+            }
+            STF_Ship_Data = STF_Ship_Data.AsEnumerable().OrderBy(row => row.Field<int>("Max Mass")).ThenBy(row => row.Field<string>("Price")).CopyToDataTable();
+        }
+        public void SetCompDataTablesToInt()
+        {
+            var STF_Comp_List = new List<string>();
+            foreach (DataColumn theColumn in STF_Ship_Components.Columns)
+            {
+                string columnName = theColumn.ColumnName.ToString();
+                if (columnName.Equals("Name") || columnName.Equals("Size"))
+                {
+
+                }
+                else
+                {
+                    STF_Comp_List.Add(columnName);
+                }
+            }
+            foreach (var theString in STF_Comp_List)
+            {
+                ChangeColumnType(STF_Ship_Components, theString, typeof(int));
+            }
+            STF_Ship_Data = STF_Ship_Data.AsEnumerable().OrderBy(row => row.Field<int>("Max Mass")).ThenBy(row => row.Field<string>("Price")).CopyToDataTable();
         }
         public void setBridgeMember1(BridgeMember memberAye)
         {

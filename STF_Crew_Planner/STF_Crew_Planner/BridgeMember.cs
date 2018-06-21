@@ -50,7 +50,7 @@ namespace STF_CharacterPlanner
             var filteredTable = new DataTable();
             if (newTable.Rows.Count > 0)
             {
-                filteredTable = newTable.AsEnumerable().OrderBy(row => row.Field<string>("Job")).CopyToDataTable();
+                filteredTable = newTable.Copy();
             }
             return filteredTable;
         }
@@ -78,6 +78,11 @@ namespace STF_CharacterPlanner
             
 
             return filteredTable;
+        }
+
+        private void availableTalents1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
