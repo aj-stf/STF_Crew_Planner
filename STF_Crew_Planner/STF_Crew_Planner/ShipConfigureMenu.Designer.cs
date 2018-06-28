@@ -33,7 +33,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ShipBrowseGrid = new System.Windows.Forms.DataGridView();
             this.browseCompsButton = new System.Windows.Forms.Button();
+            this.browseWeaponsBut = new System.Windows.Forms.Button();
+            this.weaponDataGrid = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.ShipBrowseGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // browseShipsButton
@@ -96,19 +99,49 @@
             this.browseCompsButton.UseVisualStyleBackColor = false;
             this.browseCompsButton.Click += new System.EventHandler(this.browseCompsButton_Click);
             // 
+            // browseWeaponsBut
+            // 
+            this.browseWeaponsBut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(239)))), ((int)(((byte)(250)))));
+            this.browseWeaponsBut.Location = new System.Drawing.Point(569, 25);
+            this.browseWeaponsBut.Name = "browseWeaponsBut";
+            this.browseWeaponsBut.Size = new System.Drawing.Size(112, 23);
+            this.browseWeaponsBut.TabIndex = 5;
+            this.browseWeaponsBut.Text = "Browse Weapons";
+            this.browseWeaponsBut.UseVisualStyleBackColor = false;
+            this.browseWeaponsBut.Click += new System.EventHandler(this.browseWeaponsBut_Click);
+            // 
+            // weaponDataGrid
+            // 
+            this.weaponDataGrid.AllowUserToAddRows = false;
+            this.weaponDataGrid.AllowUserToDeleteRows = false;
+            this.weaponDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(239)))), ((int)(((byte)(250)))));
+            this.weaponDataGrid.ColumnHeadersHeight = 50;
+            this.weaponDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.weaponDataGrid.Location = new System.Drawing.Point(10, 186);
+            this.weaponDataGrid.MaximumSize = new System.Drawing.Size(1140, 3000);
+            this.weaponDataGrid.MinimumSize = new System.Drawing.Size(1140, 0);
+            this.weaponDataGrid.Name = "weaponDataGrid";
+            this.weaponDataGrid.ReadOnly = true;
+            this.weaponDataGrid.RowTemplate.Height = 35;
+            this.weaponDataGrid.Size = new System.Drawing.Size(1140, 194);
+            this.weaponDataGrid.TabIndex = 6;
+            // 
             // ShipConfigureMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(152)))), ((int)(((byte)(221)))));
+            this.Controls.Add(this.weaponDataGrid);
+            this.Controls.Add(this.browseWeaponsBut);
             this.Controls.Add(this.browseCompsButton);
             this.Controls.Add(this.ShipBrowseGrid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.selectShipBox);
             this.Controls.Add(this.browseShipsButton);
             this.Name = "ShipConfigureMenu";
-            this.Size = new System.Drawing.Size(1160, 190);
+            this.Size = new System.Drawing.Size(1160, 390);
             ((System.ComponentModel.ISupportInitialize)(this.ShipBrowseGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weaponDataGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -121,5 +154,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView ShipBrowseGrid;
         private System.Windows.Forms.Button browseCompsButton;
+        private System.Windows.Forms.Button browseWeaponsBut;
+        private System.Windows.Forms.DataGridView weaponDataGrid;
     }
 }

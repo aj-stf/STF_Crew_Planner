@@ -11,8 +11,14 @@ namespace STF_CharacterPlanner
 {
     class OutputToFile
     {
+        DataObject testObject;
+        MainForm aForm;
+        List<DataStorage.CrewDataStruct> theCrew;
+
         public void createNewTextFile(MainForm theForm)
         {
+            testObject = new DataObject();
+
             CreateDataFile(theForm);
         }
         private void CreateDataFile(MainForm theForm)
@@ -24,6 +30,8 @@ namespace STF_CharacterPlanner
             DataTable MemberJobs5 = new DataTable();
             DataTable MemberJobs6 = new DataTable();
             DataTable MemberJobs7 = new DataTable();
+            DataTable MyWeaponsTable = new DataTable();
+
             String SaveMyFileBro = "";
             var GroupName = theForm.menu_Control1.ReturnGroupName();
             if (GroupName.Length > 0)
@@ -47,6 +55,8 @@ namespace STF_CharacterPlanner
             {
                 return;
             }
+
+            aForm = theForm;
 
             if (MemberJobs1.Rows.Count > 0)
             {
@@ -128,6 +138,51 @@ namespace STF_CharacterPlanner
                 using (StreamWriter sw = new StreamWriter(savefile.FileName))
                     sw.Write(saveString);
             }
+        }
+        private DataTable ReturnWeaponsTable(DataStorage.SelectedShip theShip)
+        {
+            DataStorage stf_Data = DataStorage.Instance;
+            stf_Data.InstatiateTables();
+
+            DataTable dt = stf_Data.STF_Ship_Weapons.Clone();
+            foreach (DataRow dr in theShip.Components.Large.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        dt.ImportRow(dw);
+                    }
+                }
+            }
+            foreach (DataRow dr in theShip.Components.Medium.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        dt.ImportRow(dw);
+                    }
+                }
+            }
+            foreach (DataRow dr in theShip.Components.Small.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        dt.ImportRow(dw);
+                    }
+                }
+            }
+
+            DataTable sortedDT = new DataTable();
+
+            if (testObject.DataTableValid(dt))
+            {
+                sortedDT = dt.AsEnumerable().OrderBy(row => row.Field<string>("Name")).CopyToDataTable();
+            }
+            return dt;
         }
         private string CombinedCharacterString(DataTable Jobs, DataTable Talents, List<string> Skills, string Officer)
         {
@@ -246,6 +301,7 @@ namespace STF_CharacterPlanner
             string displayRowString = Rank.ToString() + sT + Name + firstTab + JobName + secondTab + Type;
             return displayRowString;
         }
+
         private string ReturnShipString(DataStorage.SelectedShip theShip)
         {
             String sT = "\t";
@@ -255,6 +311,25 @@ namespace STF_CharacterPlanner
             String fiT = "\t\t\t\t\t";
             string rC = "\n";
             var myString = "";
+            DataTable largeTable = new DataTable();
+            DataTable mediumTable = new DataTable();
+            DataTable smallTable = new DataTable();
+
+
+            if (testObject.DataTableValid(theShip.Components.Large))
+            {
+                largeTable = theShip.Components.Large.AsEnumerable().OrderBy(row => row.Field<string>("Name")).CopyToDataTable();
+            }
+            if (testObject.DataTableValid(theShip.Components.Large))
+            {
+                mediumTable = theShip.Components.Medium.AsEnumerable().OrderBy(row => row.Field<string>("Name")).CopyToDataTable();
+            }
+            if (testObject.DataTableValid(theShip.Components.Large))
+            {
+                smallTable = theShip.Components.Small.AsEnumerable().OrderBy(row => row.Field<string>("Name")).CopyToDataTable();
+            }
+
+
             myString += "================================================================" + rC;
             myString += "---------------------------------------------------" + rC;
             myString += "Ship Readout" + rC;
@@ -279,13 +354,15 @@ namespace STF_CharacterPlanner
                     }
                 }
             }
+            
             myString += "---------------------------------------------------" + rC;
             myString += "Ship Components" + rC;
             myString += "---------------------------------------------------" + rC;
             myString += "-------------------------------------------" + rC;
             myString += "Large Components" + rC;
             myString += "-------------------------------------------" + rC;
-            foreach (DataRow dr in theShip.Components.Large.Rows)
+            
+            foreach (DataRow dr in largeTable.Rows)
             {
                 var aString = dr[0].ToString();
                 myString += aString + rC;
@@ -293,7 +370,7 @@ namespace STF_CharacterPlanner
             myString += "-------------------------------------------" + rC;
             myString += "Medium Components" + rC;
             myString += "-------------------------------------------" + rC;
-            foreach (DataRow dr in theShip.Components.Medium.Rows)
+            foreach (DataRow dr in mediumTable.Rows)
             {
                 var aString = dr[0].ToString();
                 myString += aString + rC;
@@ -301,12 +378,97 @@ namespace STF_CharacterPlanner
             myString += "-------------------------------------------" + rC;
             myString += "Small Components" + rC;
             myString += "-------------------------------------------" + rC;
-            foreach (DataRow dr in theShip.Components.Small.Rows)
+            foreach (DataRow dr in smallTable.Rows)
             {
                 var aString = dr[0].ToString();
                 myString += aString + rC;
             }
+
+            myString += WeaponsString(ReturnWeaponsTable(theShip));
             myString += "================================================================" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "Dice Pools" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "-------------------------------------------" + rC;
+            myString += "Ship Combat Dice" + rC;
+            myString += "-------------------------------------------" + rC;
+            
+            CombatPools NewPools = new CombatPools();
+            List<string> myPools = NewPools.CalculateOutputCombatPools(aForm.theCrew, aForm);
+            foreach (var aString in myPools)
+            {
+                myString += aString + rC;
+            }
+            myString += "-------------------------------------------" + rC;
+            myString += "Crew Dice" + rC;
+            myString += "-------------------------------------------" + rC;
+            SkillPools Skills = new SkillPools();
+            List<string> SkPools = Skills.CalculateSkillPools(aForm.theCrew, aForm);
+            foreach (var aString in SkPools)
+            {
+                myString += aString + rC;
+            }
+            myString += "================================================================" + rC;
+            return myString;
+        }
+        private string WeaponsString(DataTable dt)
+        {
+            var myString = "";
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String fiT = "\t\t\t\t\t";
+            String siT = "\t\t\t\t\t\t";
+            string rC = "\n";
+            myString += "---------------------------------------------------" + rC;
+            myString += "Ship Weapons" + rC;
+            myString += "---------------------------------------------------" + rC;
+            myString += "Name" + siT + "Rng" + dT + "Dmg" + dT + "Rad" + dT + "Void" + sT + "AP" + dT + "Acc" + dT + "Crit" + sT + "Cripple" + rC;
+            foreach (DataRow dr in dt.Rows)
+            {
+                myString += FirstWeaponReturn(dr["Name"].ToString());
+
+                myString += dr["Range"] + dT + dr["Damage"] + dT + dr["Radiation"] + dT + dr["Void"] + dT + dr["AP"] + dT + dr["Accuracy"] + dT + dr["Critical Chance"] + dT + dr["Cripple Chance"] + rC;
+            }
+
+            return myString;
+        }
+        private string FirstWeaponReturn(string theWeapon)
+        {
+            var myString = "";
+            String sT = "\t";
+            String dT = "\t\t";
+            String tT = "\t\t\t";
+            String fT = "\t\t\t\t";
+            String fiT = "\t\t\t\t\t";
+            String siT = "\t\t\t\t\t\t";
+            string rC = "\n";
+
+            if (theWeapon.Length > 23)
+            {
+                myString = theWeapon + sT;
+            }
+            else if (theWeapon.Length > 19)
+            {
+                myString = theWeapon + dT;
+            }
+            else if (theWeapon.Length > 15)
+            {
+                myString = theWeapon + tT;
+            }
+            else if (theWeapon.Length > 10)
+            {
+                myString = theWeapon + fT;
+            }
+            else if (theWeapon.Length > 6)
+            {
+                myString = theWeapon + fiT;
+            }
+            else
+            {
+                myString = theWeapon + siT;
+            }
 
             return myString;
         }
@@ -320,13 +482,17 @@ namespace STF_CharacterPlanner
             {
                 myString = NameString + ":" + snglTab + ValueString;
             }
-            else if (NameString.Length > 6)
+            else if (NameString.Length > 10)
             {
                 myString = NameString + ":" + snglTab + ValueString;
             }
-            else
+            else if (NameString.Length > 6)
             {
                 myString = NameString + ":" + dblTab + ValueString;
+            }
+            else
+            {
+                myString = NameString + ":" + trpTab + ValueString;
             }
 
             return myString;
@@ -381,7 +547,16 @@ namespace STF_CharacterPlanner
             }
             else
             {
-                myString = aCrew.Job + fT + aCrew.Num + dblTab + aCrew.Rank;
+                var newString = "";
+                if (aCrew.Job.Contains("Spy"))
+                {
+                    newString = "Spy ";
+                }
+                else
+                {
+                    newString = aCrew.Job;
+                }
+                myString = newString + fT + aCrew.Num + dblTab + aCrew.Rank;
             }
 
             return myString;

@@ -36,6 +36,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.shipReadout = new System.Windows.Forms.ListBox();
             this.configureShipBut = new System.Windows.Forms.Button();
+            this.calcShipCombatBut = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // configureCrewBut
@@ -126,10 +127,22 @@
             this.configureShipBut.UseVisualStyleBackColor = false;
             this.configureShipBut.Click += new System.EventHandler(this.configureShipBut_Click);
             // 
+            // calcShipCombatBut
+            // 
+            this.calcShipCombatBut.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.calcShipCombatBut.Location = new System.Drawing.Point(3, 85);
+            this.calcShipCombatBut.Name = "calcShipCombatBut";
+            this.calcShipCombatBut.Size = new System.Drawing.Size(132, 23);
+            this.calcShipCombatBut.TabIndex = 8;
+            this.calcShipCombatBut.Text = "Calculate Ship Combat";
+            this.calcShipCombatBut.UseVisualStyleBackColor = false;
+            this.calcShipCombatBut.Click += new System.EventHandler(this.calcShipCombatBut_Click);
+            // 
             // ShipCrewAndDiceControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.calcShipCombatBut);
             this.Controls.Add(this.configureShipBut);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.shipReadout);
@@ -155,5 +168,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox shipReadout;
         private System.Windows.Forms.Button configureShipBut;
+        private System.Windows.Forms.Button calcShipCombatBut;
     }
 }

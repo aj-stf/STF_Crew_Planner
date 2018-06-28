@@ -61,6 +61,12 @@
     <Compile Include="BridgeMember.Designer.cs">
       <DependentUpon>BridgeMember.cs</DependentUpon>
     </Compile>
+    <Compile Include="BrowseWeapons.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrowseWeapons.Designer.cs">
+      <DependentUpon>BrowseWeapons.cs</DependentUpon>
+    </Compile>
     <Compile Include="BrowseCompsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,12 @@
     <Compile Include="ShipCrewMenu.Designer.cs">
       <DependentUpon>ShipCrewMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShipWeaponBrowse.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ShipWeaponBrowse.Designer.cs">
+      <DependentUpon>ShipWeaponBrowse.cs</DependentUpon>
+    </Compile>
     <Compile Include="TalentMenu.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -191,6 +203,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BrowseShipsForm.resx">
       <DependentUpon>BrowseShipsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrowseWeapons.resx">
+      <DependentUpon>BrowseWeapons.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CompBrowser.resx">
       <DependentUpon>CompBrowser.cs</DependentUpon>
@@ -244,6 +259,9 @@
     <EmbeddedResource Include="ShipCrewMenu.resx">
       <DependentUpon>ShipCrewMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ShipWeaponBrowse.resx">
+      <DependentUpon>ShipWeaponBrowse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TalentMenu.resx">
       <DependentUpon>TalentMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,9 +285,11 @@
     <None Include="Resources\ship components.csv" />
     <None Include="Resources\skill_list.csv" />
     <None Include="Resources\skill_per_job_list.csv" />
+    <None Include="Resources\stf_engine_data.csv" />
     <None Include="Resources\STF_Ship_Data.csv" />
     <None Include="Resources\STF_Ship_Default_Comp.csv" />
     <None Include="Resources\stf_talent_job.csv" />
+    <None Include="Resources\stf_weapon_data.csv" />
     <None Include="Resources\talent_points.csv" />
   </ItemGroup>
   <ItemGroup>

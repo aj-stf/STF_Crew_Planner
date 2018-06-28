@@ -37,6 +37,7 @@ Capital Bridge 4:Large:600:10:6:0:10:10:0:0:1:1:0:1:0:0:0:0
 Cargo Hold 1:Large:625:0:2:0:0:0:25:0:0:0:0:0:40:0:0:0
 Cargo Hold 2:Large:625:0:2:0:0:0:35:0:0:0:0:0:50:0:0:0
 Cargo Hold 3:Large:625:0:4:0:0:0:40:0:0:0:0:0:60:0:0:0
+Cargo Hold 4:Large:625:0:4:0:0:0:45:0:0:0:0:0:70:0:0:0
 Cargo-Fuel Storage:Medium:325:0:3:0:0:0:10:0:0:0:0:0:10:0:0:0
 Cloudstrike Lance:Small:150:0:3:6:1:0:0:0:0:0:0:0:0:0:0:0
 Combat Hospital:Large:650:0:5:0:3:0:0:0:0:1:2:2:0:0:0:8
@@ -113,7 +114,7 @@ M5000 Hyperwarp EX:Medium:225:0:0:0:4:14:0:0:0:0:0:18:0:0:0:0
 M5000 Hyperwarp KS:Medium:225:0:0:0:4:13:0:0:0:1:0:20:0:0:0:0
 M5000 Void Engine-Balanced:Large:800:9:9:0:6:0:0:0:0:0:0:0:0:0:0:0
 M5000 Void Engine-Chaser:Large:800:10:8:0:6:0:0:0:0:0:0:0:0:0:0:0
-M5000 Void Engine EX1:Large:800:9:9:0:6:0:0:0:0:0:0:0:0:0:0:0
+M5000 Void Engine-Longhaul:Large:800:9:9:0:6:0:0:0:0:0:0:0:0:0:0:0
 M5000 Void Engine-Traveler:Large:800:8:10:0:6:0:0:0:0:0:0:0:0:0:0:0
 M6000 Hyperwarp:Medium:300:0:0:0:4:16:0:0:0:0:0:26:0:0:0:0
 M6000 Hyperwarp EX:Medium:300:0:0:0:6:19:0:0:0:0:0:22:0:0:0:0
@@ -137,6 +138,9 @@ M8000 Void Engine-Chaser:Large:1500:17:15:0:12:0:0:0:0:0:0:0:0:0:0:0
 M8000 Void Engine-Longhaul:Large:1500:17:15:0:12:0:0:0:0:0:0:0:0:0:0:0
 M8000 Void Engine-Traveler:Large:1500:17:15:0:12:0:0:0:0:0:0:0:0:0:0:0
 M9000 Void Engine-Balanced:Large:1500:17:15:0:12:0:0:0:0:0:0:0:0:0:0:0
+M9000 Void Engine-Longhaul:Large:1500:16:17:0:13:0:0:0:0:0:0:0:0:0:0:0
+M9000 Void Engine-Chaser:Large:1500:17:17:0:13:0:0:0:0:0:0:0:0:0:0:0
+M9000 Void Engine-Traveler:Large:1500:17:17:0:12:0:0:0:0:0:0:0:0:0:0:0
 M9000 Hyperwarp:Large:550:0:0:0:8:20:0:0:0:0:0:32:0:0:0:0
 M90 Barrel-Cannon:Medium:300:0:2:6:0:0:0:0:0:0:0:0:0:0:0:0
 M92 Barrel-Cannon:Small:100:0:2:5:0:0:0:0:0:0:0:0:0:0:0:0

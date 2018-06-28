@@ -116,7 +116,6 @@ namespace STF_CharacterPlanner
                 }
                 foreach (string myString in ShipDisplayStrings)
                 {
-                    Console.WriteLine(myString);
                     shipReadout.Items.Add(myString);
                 }
                 shipReadout.Refresh();
@@ -127,6 +126,7 @@ namespace STF_CharacterPlanner
             }
 
         }
+        
         private string ShipRowString(string NameString, string ValueString)
         {
             var snglTab = "\t";
@@ -459,6 +459,55 @@ namespace STF_CharacterPlanner
                 dt.Rows.Add(newRow);
             }
             return dt;
+        }
+
+        private void calcShipCombatBut_Click(object sender, EventArgs e)
+        {
+            UpdateShipCombat();
+        }
+        private void UpdateShipCombat()
+        {
+            MainForm theForm = (this.Parent as MainForm);
+            bool hasCombatPool = false;
+
+            foreach (var myString in SkillDisplayStrings)
+            {
+                if (myString.Contains("Ship Combat"))
+                {
+                    hasCombatPool = true;
+                }
+            }
+            if (!hasCombatPool)
+            {
+                CombatPools myCombat = new CombatPools();
+                List<string> combatStrings = myCombat.CalculateCombatPools(theCrew, theForm);
+                List<string> OldDisplayStrings = new List<string>();
+
+                foreach (var myString in SkillDisplayStrings)
+                {
+                    OldDisplayStrings.Add(myString);
+                }
+                SkillDisplayStrings.Clear();
+
+                foreach (var myString in combatStrings)
+                {
+                    Console.WriteLine(myString);
+                    SkillDisplayStrings.Add(myString);
+                }
+                SkillDisplayStrings.Add("-----------------------------\n");
+                foreach (var myString in OldDisplayStrings)
+                {
+                    SkillDisplayStrings.Add(myString);
+                }
+
+                shipDiceBox.Items.Clear();
+                foreach (var myString in SkillDisplayStrings)
+                {
+                    shipDiceBox.Items.Add(myString);
+                }
+                shipDiceBox.Refresh();
+            }
+            
         }
     }
 }

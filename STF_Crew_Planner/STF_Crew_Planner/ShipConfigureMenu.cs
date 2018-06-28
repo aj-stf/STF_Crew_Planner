@@ -15,12 +15,14 @@ namespace STF_CharacterPlanner
         public DataStorage stf_Data;
         public DataTable ShipDataTable;
         public DataTable ShipBaseTable;
+        public DataTable ShipWeaponTable;
         public List<string> ShipNames;
         public DataTable SelectedShipTable;
         public DataStorage.SelectedComponents MySelectedComp;
         public DataTable SelectedComps;
         public DataTable CompiledComponents;
         BindingSource SBind;
+        BindingSource WBind;
 
         public ShipConfigureMenu()
         {
@@ -32,6 +34,7 @@ namespace STF_CharacterPlanner
             ShipDataTable = stf_Data.STF_Ship_Data.Copy();
             SelectedShipTable = stf_Data.STF_Ship_Data.Clone();
             ShipBaseTable = stf_Data.STF_Ship_Data.Clone();
+            ShipWeaponTable = stf_Data.STF_Ship_Weapons.Clone();
             CompiledComponents = stf_Data.STF_Ship_Components.Clone();
             SelectedComps = stf_Data.STF_Ship_Components.Clone();
             ConstructBaseShipData();
@@ -39,6 +42,7 @@ namespace STF_CharacterPlanner
             ShipNames = ReturnShips(stf_Data.STF_Ship_Data);
             SBind.DataSource = SelectedShipTable;
             ShipBrowseGrid.DataSource = SBind;
+            CreateWeaponList();
             ShipBrowseGrid.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             ShipBrowseGrid.Columns["Tier"].Visible = false;
             ShipBrowseGrid.Refresh();
@@ -76,6 +80,55 @@ namespace STF_CharacterPlanner
             CompiledComponents.Rows.Add(newRow);
             //DisplayNewData();
             AddShipToData();
+        }
+        private void CreateWeaponList()
+        {
+            WBind = new BindingSource();
+            WBind.DataSource = ShipWeaponTable;
+            weaponDataGrid.DataSource = WBind;
+            foreach (DataGridViewColumn theColumn in weaponDataGrid.Columns)
+            {
+                theColumn.Width = 85;
+            }
+            DataGridViewColumn dgvc1 = weaponDataGrid.Columns[0];
+            DataGridViewColumn dgvc2 = weaponDataGrid.Columns[1];
+            dgvc1.Width = 200;
+            dgvc2.Width = 100;
+        }
+        private void UpdateWeaponList()
+        {
+            ShipWeaponTable.Rows.Clear();
+            foreach (DataRow dr in MySelectedComp.Large.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        ShipWeaponTable.ImportRow(dw);
+                    }
+                }
+            }
+            foreach (DataRow dr in MySelectedComp.Medium.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        ShipWeaponTable.ImportRow(dw);
+                    }
+                }
+            }
+            foreach (DataRow dr in MySelectedComp.Small.Rows)
+            {
+                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                {
+                    if (dw["Name"].Equals(dr["Name"]))
+                    {
+                        ShipWeaponTable.ImportRow(dw);
+                    }
+                }
+            }
+            weaponDataGrid.Refresh();
         }
         private void ConstructBaseShipData()
         {
@@ -147,9 +200,53 @@ namespace STF_CharacterPlanner
                 int anInt = theOldInt + theNewInt;
                 dr[myColName] = anInt;
             }
+            var strEngine = EngineString();
+            if (strEngine.Length > 0)
+            {
+                DataTable myEngine = EngineData(strEngine);
+                stf_Data.TestTable(myEngine);
+                dr["Speed"] = Int32.Parse(myEngine.Rows[0]["Speed"].ToString());
+                dr["Agility"] = Int32.Parse(myEngine.Rows[0]["Agility"].ToString());
+                dr["Fuel Cost"] = Int32.Parse(myEngine.Rows[0]["Fuel Cost"].ToString());
+            }else
+            {
+                dr["Speed"] = 0;
+                dr["Agility"] = 0;
+                dr["Fuel Cost"] = 1;
+            }
+            
             dr["Fuel Range"] = ReturnFuelRange(dr);
             dr.AcceptChanges();
             ShipBrowseGrid.Refresh();
+            UpdateWeaponList();
+        }
+        private string EngineString()
+        {
+            var myString = "";
+            foreach (DataRow dr in MySelectedComp.Large.Rows)
+            {
+                if (dr["Name"].ToString().Contains("Engine"))
+                {
+                    myString = dr["Name"].ToString();
+                    break;
+                }
+            }
+
+            return myString;
+        }
+        private DataTable EngineData(string Name)
+        {
+            DataTable dt = stf_Data.STF_Ship_Engine.Clone();
+
+            foreach (DataRow dr in stf_Data.STF_Ship_Engine.Rows)
+            {
+                if (dr["Name"].Equals(Name))
+                {
+                    dt.ImportRow(dr);
+                }
+            }
+
+            return dt;
         }
         private int ReturnFuelRange (DataRow dr)
         {
@@ -286,6 +383,12 @@ namespace STF_CharacterPlanner
                     break;
                 }
             }
+        }
+
+        private void browseWeaponsBut_Click(object sender, EventArgs e)
+        {
+            Browse_Weapons newForm = new Browse_Weapons();
+            newForm.Show();
         }
     }
 }

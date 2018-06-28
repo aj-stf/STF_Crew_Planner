@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace STF_CharacterPlanner
 {
-    public partial class ShipBrowser : UserControl
+    public partial class ShipWeaponBrowse : UserControl
     {
         public DataStorage stf_Data;
         public DataTable ShipDataTable;
         BindingSource SBind;
 
-        public ShipBrowser()
+        public ShipWeaponBrowse()
         {
             InitializeComponent();
             stf_Data = DataStorage.Instance;
             stf_Data.InstatiateTables();
             ShipDataTable = new DataTable();
-            ShipDataTable = stf_Data.STF_Ship_Data.Copy();
+            ShipDataTable = stf_Data.STF_Ship_Weapons.Copy();
             SBind = new BindingSource();
             SBind.DataSource = ShipDataTable;
             ShipBrowseGrid.DataSource = SBind;
@@ -38,10 +38,13 @@ namespace STF_CharacterPlanner
             }
             DataGridViewColumn dgvc1 = ShipBrowseGrid.Columns[0];
             DataGridViewColumn dgvc2 = ShipBrowseGrid.Columns[1];
-            DataGridViewColumn dgvc3 = ShipBrowseGrid.Columns[2];
             dgvc1.Width = 100;
-            dgvc2.Width = 50;
-            dgvc3.Width = 100;
+            dgvc2.Width = 100;
+            for (int x = 2; x < ShipBrowseGrid.ColumnCount; x++)
+            {
+                DataGridViewColumn dgvc = ShipBrowseGrid.Columns[x];
+                dgvc.Width = 60;
+            }
         }
     }
 }
