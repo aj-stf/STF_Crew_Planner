@@ -18,9 +18,9 @@ Weapon Layout with range and damage
 
 
 TODO
-Show direct percentage blocked for Shields/Armour
-Update Text output with table formats
-Crew Combat display and output.  Ranges, weapons, armor, talents
+- Show direct percentage blocked for Shields/Armour
+- Update Text output with table formats
+- Crew Combat display and output.  Ranges, weapons, armor, talents
 
 
 
