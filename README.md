@@ -1,20 +1,21 @@
 # STF_Crew_Planner
-Star Traders Frontiers Crew Planner v0.16
+Star Traders Frontiers Crew Planner 
+v0.16
 
 CURRENT FEATURES
--Plan Bridge Crew, up to 7 officers
--Plan Ship Layout
--Plan Non-officer Crew
--See Dice Pools for Crew and Ship
--See Ship Combat Dice Pools
--See Card Reward Pools
--Output to Text File
--Save/Load to XML
--Search All Talents by Job, Type, or Description term
--Browse All Ships
--Browse All Components
--Browse All Weapons
--Weapon Layout with range and damage
+- Plan Bridge Crew, up to 7 officers
+- Plan Ship Layout
+- Plan Non-officer Crew
+- See Dice Pools for Crew and Ship
+- See Ship Combat Dice Pools
+- See Card Reward Pools
+- Output to Text File
+- Save/Load to XML
+- Search All Talents by Job, Type, or Description term
+- Browse All Ships
+- Browse All Components
+- Browse All Weapons
+- Weapon Layout with range and damage
 
 
 TODO
