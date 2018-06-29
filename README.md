@@ -27,6 +27,7 @@ TODO
 
 
 CHANGELOG
+
 v0.16
 - Added Weapon Data and Browser
 - Added Weapon Layout during config and output
