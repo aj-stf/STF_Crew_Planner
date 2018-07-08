@@ -318,3 +318,9 @@ Summary Execution:8:Capital punishment of the lowest Morale mutineer quickly rem
 Infliction Rage:11:When making Initiative Roll in Crew Combat, Buff yourself with +3 Initiative, +25% All Damage, +25% Armor for 3 Turns, Restores (5 + 0 Intimidate) Morale:Chance to activate at the start of each combat turn:Zealot:On Init
 Diehard Defense:11:When Patrolling a system, replace a risk card with Mission success reward card.:3 weeks Cooldown:Zealot:Patrol
 Fanatical Court:15:Upon defeating an enemy captain during a Conflict, seize their ship through a local prize court. We must pay the court 65% of the ship's value in tithes and fees and we will lose 60 Reputation with the enemy while striking a mighty blow in the Conflict:36 weeks Cooldown:Zealot:Victory
+Unstoppable Hunt:15:While Exploring a Wild Zone, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Explorer:Explore
+Incorrigible Sneak:15:When attempting to access a Black Market, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Smuggler:Smuggle
+Enduring Defender:15:When Patrolling a system, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Zealot:Patrol
+Rampant Theft:15:When Spying in the orbit of a system, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Spy:Spy
+Unbridled Raider:15:During a Blockade of a system, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Pirate:Blockade
+Stalwart Loyalist:15:When Patrolling a system, reroll all 5 cards and draw a new hand:21 weeks Cooldown:Military Officer:Patrol

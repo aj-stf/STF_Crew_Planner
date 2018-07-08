@@ -53,7 +53,7 @@ namespace STF_CharacterPlanner
             MaxCrewNum = 42;
             ShipCrewNum = 0;
             TotalInputCrew = 0;
-            MaxCrewRanks = 24;
+            MaxCrewRanks = 32;
             CrewNumChoiceMax = 10;
         }
         private void UpdateControlsWithCrewData()

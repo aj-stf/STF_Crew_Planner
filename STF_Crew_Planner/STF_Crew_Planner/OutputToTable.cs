@@ -9,16 +9,30 @@ using System.Windows.Forms;
 
 namespace STF_CharacterPlanner
 {
-    class OutputToFile
+    class OutputToTable
     {
         DataObject testObject;
         MainForm aForm;
         List<DataStorage.CrewDataStruct> theCrew;
+        DataStorage stfData;
+        string td1;
+        string td2;
+        string tr1;
+        string tr2;
+        string tb1;
+        string tb2;
 
         public void createNewTextFile(MainForm theForm)
         {
+            stfData = theForm.ReturnMainData();
             testObject = new DataObject();
 
+            td1 = "[td style=\"padding: 6px; \"]";
+            td2 = "[/td]\n";
+            tr1 = "[tr]\n";
+            tr2 = "[/tr]\n";
+            tb1 = "[table][tbody]\n";
+            tb2 = "[/tbody][/table]\n";
             CreateDataFile(theForm);
         }
         private void CreateDataFile(MainForm theForm)
@@ -141,12 +155,10 @@ namespace STF_CharacterPlanner
         }
         private DataTable ReturnWeaponsTable(DataStorage.SelectedShip theShip)
         {
-            DataStorage stf_Data = aForm.ReturnMainData();
-
-            DataTable dt = stf_Data.STF_Ship_Weapons.Clone();
+            DataTable dt = stfData.STF_Ship_Weapons.Clone();
             foreach (DataRow dr in theShip.Components.Large.Rows)
             {
-                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                foreach (DataRow dw in stfData.STF_Ship_Weapons.Rows)
                 {
                     if (dw["Name"].Equals(dr["Name"]))
                     {
@@ -156,7 +168,7 @@ namespace STF_CharacterPlanner
             }
             foreach (DataRow dr in theShip.Components.Medium.Rows)
             {
-                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                foreach (DataRow dw in stfData.STF_Ship_Weapons.Rows)
                 {
                     if (dw["Name"].Equals(dr["Name"]))
                     {
@@ -166,7 +178,7 @@ namespace STF_CharacterPlanner
             }
             foreach (DataRow dr in theShip.Components.Small.Rows)
             {
-                foreach (DataRow dw in stf_Data.STF_Ship_Weapons.Rows)
+                foreach (DataRow dw in stfData.STF_Ship_Weapons.Rows)
                 {
                     if (dw["Name"].Equals(dr["Name"]))
                     {
@@ -183,7 +195,49 @@ namespace STF_CharacterPlanner
             }
             return dt;
         }
-        private string CombinedCharacterString(DataTable Jobs, DataTable Talents, List<string> Skills, string Officer)
+        private string ReturnDTtoTableStringNoHeader(DataTable theTable)
+        {
+            var myString = "";
+            myString += tb1;
+            int x = theTable.Columns.Count;
+            foreach (DataRow dr in theTable.Rows)
+            {
+                myString += tr1;
+                for (int y = 0; y < x; y++)
+                {
+                    myString += td1 + dr[y].ToString() + td2;
+                }
+                myString += tr2;
+            }
+            myString += tb2;
+
+            return myString;
+        }
+        private string ReturnDTtoTableStringHeader(DataTable theTable)
+        {
+            var myString = "";
+            myString += tb1;
+            int x = theTable.Columns.Count;
+            myString += tr1;
+            foreach (DataColumn dc in theTable.Columns)
+            {
+                myString += td1 + dc.ColumnName.ToString() + td2;
+            }
+            myString += tr2;
+            foreach (DataRow dr in theTable.Rows)
+            {
+                myString += tr1;
+                for (int y = 0; y < x; y++)
+                {
+                    myString += td1 + dr[y].ToString() + td2;
+                }
+                myString += tr2;
+            }
+            myString += tb2;
+
+            return myString;
+        }
+        private string CombinedCharacterString(DataTable Jobs, DataTable Talents, DataTable Skills, string Officer)
         {
             String sT = "\t";
             String dT = "\t\t";
@@ -196,47 +250,50 @@ namespace STF_CharacterPlanner
             myString += "-------------------------------------------" + "\n";
             myString += "Jobs" + rC;
             myString += "-------------------------------------------" + "\n";
-            foreach (DataRow dr in Jobs.Rows)
-            {
-                var newString = dr[1].ToString() + sT + dr[0].ToString() + rC;
-                myString += newString;
-            }
+            myString += ReturnDTtoTableStringNoHeader(Jobs);
             myString += "-------------------------------------------" + "\n";
             myString += "Skills" + rC;
             myString += "-------------------------------------------" + "\n";
-            foreach (string aString in Skills)
-            {
-                myString += aString + rC;
-            }
+            myString += ReturnDTtoTableStringNoHeader(Skills);
             myString += "-------------------------------------------" + "\n";
             myString += "Talents" + rC;
             myString += "-------------------------------------------" + "\n";
-            foreach (DataRow dr in Talents.Rows)
-            {
-                var newString = NewTalentString(dr);
-                myString += newString + rC;
-            }
+            myString += ReturnDTtoTableStringNoHeader(Talents);
             myString += "================================================================" + "\n";
             return myString;
         }
-        private List<string> combinedSkillList(BridgeMember member)
+        
+        private DataTable combinedSkillList(BridgeMember member)
         {
-            String sT = "\t";
-            String dT = "\t\t";
-            String tT = "\t\t\t";
-            List<string> myList = new List<string>();
+            var dt = new DataTable();
+
             var firstList = member.returnNumList();
             var secondList = member.returnSkillsList();
+
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Skill";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Rank";
+            dg.DataType = typeof(Int32);
+            dg.DefaultValue = 0;
+
+            dt.Columns.Add(dc);
+            dt.Columns.Add(dg);
 
             if (firstList.Count > 0)
             {
                 for (int x = 0; x < firstList.Count; x++)
                 {
-                    string newString = firstList[x].ToString() + sT + secondList[x].ToString();
-                    myList.Add(newString);
+                    DataRow dr = dt.NewRow();
+                    dr[0] = secondList[x];
+                    dr[1] = firstList[x];
+                    dt.Rows.Add(dr);
                 }
             }
-            return myList;
+            return dt;
         }
         private string NewTalentString(DataRow dr)
         {
@@ -333,26 +390,7 @@ namespace STF_CharacterPlanner
             myString += "---------------------------------------------------" + rC;
             myString += "Ship Readout" + rC;
             myString += "---------------------------------------------------" + rC;
-            if (theShip.Ship.Rows.Count > 0)
-            {
-                foreach (DataRow dr in theShip.Ship.Rows)
-                {
-                    for (int x = 0; x < theShip.Ship.Columns.Count; x++)
-                    {
-                        var colName = theShip.Ship.Columns[x].ColumnName;
-                        var aString = dr[x].ToString();
-                        var shipString = ShipRowString(colName, aString);
-                        if (colName.Equals("Tier"))
-                        {
-
-                        }
-                        else
-                        {
-                            myString += shipString + rC;
-                        }
-                    }
-                }
-            }
+            myString += ReturnDTtoTableStringNoHeader(ReturnCleanShipTable(theShip.Ship));
             
             myString += "---------------------------------------------------" + rC;
             myString += "Ship Components" + rC;
@@ -360,55 +398,87 @@ namespace STF_CharacterPlanner
             myString += "-------------------------------------------" + rC;
             myString += "Large Components" + rC;
             myString += "-------------------------------------------" + rC;
-            
-            foreach (DataRow dr in largeTable.Rows)
-            {
-                var aString = dr[0].ToString();
-                myString += aString + rC;
-            }
+            myString += ReturnDTtoTableStringNoHeader(ReturnCleanCompTable(largeTable));
             myString += "-------------------------------------------" + rC;
             myString += "Medium Components" + rC;
             myString += "-------------------------------------------" + rC;
-            foreach (DataRow dr in mediumTable.Rows)
-            {
-                var aString = dr[0].ToString();
-                myString += aString + rC;
-            }
+            myString += ReturnDTtoTableStringNoHeader(ReturnCleanCompTable(mediumTable));
             myString += "-------------------------------------------" + rC;
             myString += "Small Components" + rC;
             myString += "-------------------------------------------" + rC;
-            foreach (DataRow dr in smallTable.Rows)
-            {
-                var aString = dr[0].ToString();
-                myString += aString + rC;
-            }
+            myString += ReturnDTtoTableStringNoHeader(ReturnCleanCompTable(smallTable));
 
-            myString += WeaponsString(ReturnWeaponsTable(theShip));
+            myString += ReturnDTtoTableStringHeader(ReturnWeaponsTable(theShip));
             myString += "================================================================" + rC;
             myString += "---------------------------------------------------" + rC;
             myString += "Dice Pools" + rC;
             myString += "---------------------------------------------------" + rC;
             myString += "-------------------------------------------" + rC;
-            myString += "Ship Combat Dice" + rC;
+            myString += "Ship Combat Dice (Standard Dice counted as 1/2 Strong Dice)" + rC;
             myString += "-------------------------------------------" + rC;
             
             CombatPools NewPools = new CombatPools();
-            List<string> myPools = NewPools.CalculateOutputCombatPools(aForm.theCrew, aForm);
-            foreach (var aString in myPools)
-            {
-                myString += aString + rC;
-            }
+            DataTable myPools = NewPools.CalculateTableCombatPools(aForm.theCrew, aForm);
+            myString += ReturnDTtoTableStringHeader(myPools);
             myString += "-------------------------------------------" + rC;
             myString += "Crew Dice" + rC;
             myString += "-------------------------------------------" + rC;
             SkillPools Skills = new SkillPools();
-            List<string> SkPools = Skills.CalculateSkillPools(aForm.theCrew, aForm);
-            foreach (var aString in SkPools)
+            DataTable ShipSkillTable = Skills.CalculateShipSkillTable(aForm.theCrew, aForm);
+            DataTable CrewSkillTable = Skills.CalculateCrewSkillTable(aForm.theCrew, aForm);
+
+            if (ShipSkillTable.Rows.Count > 0)
             {
-                myString += aString + rC;
+                myString += ReturnDTtoTableStringHeader(ShipSkillTable);
+            }
+            if (CrewSkillTable.Rows.Count > 0)
+            {
+                myString += ReturnDTtoTableStringHeader(CrewSkillTable);
             }
             myString += "================================================================" + rC;
             return myString;
+        }
+        private DataTable ReturnCleanShipTable(DataTable dt)
+        {
+            var newDT = new DataTable();
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Stat";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Value";
+            dg.DataType = typeof(String);
+            dg.DefaultValue = "null";
+            newDT.Columns.Add(dc);
+            newDT.Columns.Add(dg);
+
+            for (int x = 0; x < dt.Columns.Count; x++)
+            {
+                DataRow myRow = newDT.NewRow();
+                myRow[0] = dt.Columns[x].ColumnName;
+                myRow[1] = dt.Rows[0][x].ToString();
+                newDT.Rows.Add(myRow);
+            }
+
+            return newDT;
+        }
+        private DataTable ReturnCleanCompTable(DataTable dt)
+        {
+            var newDT = new DataTable();
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Component";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+            newDT.Columns.Add(dc);
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                DataRow myRow = newDT.NewRow();
+                myRow[0] = dr[0].ToString();
+                newDT.Rows.Add(myRow);
+            }
+
+            return newDT;
         }
         private string WeaponsString(DataTable dt)
         {
@@ -510,55 +580,50 @@ namespace STF_CharacterPlanner
             myString += "Crew Manifest" + rC;
             myString += "---------------------------------------------------" + rC;
             myString += "Job" + fiT + "Num" + dT + "Rank" + rC;
-            foreach (DataStorage.CrewDataStruct member in theCrew)
-            {
-                if (member.Num > 0)
-                {
-                    var aString = CrewRowString(member);
-                    myString += aString + rC;
-                }
-            }
+            var myDT = ReturnCrewTable(theCrew);
+            myString += ReturnDTtoTableStringHeader(myDT);
             return myString;
         }
-        private string CrewRowString(DataStorage.CrewDataStruct aCrew)
+        private DataTable ReturnCrewTable(List<DataStorage.CrewDataStruct> theCrew)
         {
-            var snglTab = "\t";
-            var dblTab = "\t\t";
-            var trpTab = "\t\t\t";
-            String sT = "\t";
-            String dT = "\t\t";
-            String tT = "\t\t\t";
-            String fT = "\t\t\t\t";
-            String fiT = "\t\t\t\t\t";
+            var dt = new DataTable();
 
-            var myString = "";
-            if (aCrew.Job.Length > 15)
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Job";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Num";
+            dg.DataType = typeof(Int32);
+            dg.DefaultValue = 0;
+
+            DataColumn dg2 = new DataColumn();
+            dg2.ColumnName = "Rank";
+            dg2.DataType = typeof(Int32);
+            dg2.DefaultValue = 0;
+
+            dt.Columns.Add(dc);
+            dt.Columns.Add(dg);
+            dt.Columns.Add(dg2);
+
+            if (theCrew.Count > 0)
             {
-                myString = aCrew.Job + snglTab + aCrew.Num + dblTab + aCrew.Rank;
-            }
-            else if (aCrew.Job.Length > 11)
-            {
-                myString = aCrew.Job + dblTab + aCrew.Num + dblTab + aCrew.Rank;
-            }
-            else if (aCrew.Job.Length > 7)
-            {
-                myString = aCrew.Job + trpTab + aCrew.Num + dblTab + aCrew.Rank;
-            }
-            else
-            {
-                var newString = "";
-                if (aCrew.Job.Contains("Spy"))
+                for (int x = 0; x < theCrew.Count; x++)
                 {
-                    newString = "Spy ";
+                    DataRow dr = dt.NewRow();
+                    dr[0] = theCrew[x].Job;
+                    dr[1] = theCrew[x].Num;
+                    dr[2] = theCrew[x].Rank;
+                    if (theCrew[x].Num > 0)
+                    {
+                        dt.Rows.Add(dr);
+                    }
                 }
-                else
-                {
-                    newString = aCrew.Job;
-                }
-                myString = newString + fT + aCrew.Num + dblTab + aCrew.Rank;
             }
 
-            return myString;
+
+            return dt;
         }
     }
 }

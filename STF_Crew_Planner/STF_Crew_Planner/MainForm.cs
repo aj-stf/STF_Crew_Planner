@@ -40,6 +40,10 @@ namespace STF_CharacterPlanner
             stf_Data.setBridgeMember4(bridgeMember6);
             stf_Data.setBridgeMember5(bridgeMember7);
         }
+        public DataStorage ReturnMainData()
+        {
+            return stf_Data;
+        }
         public void resetCrewForms()
         {
             bridgeMember1.resetTheBridge();
@@ -58,6 +62,11 @@ namespace STF_CharacterPlanner
         public void createNewTextFile()
         {
             OutputToFile NewSave = new OutputToFile();
+            NewSave.createNewTextFile(this);
+        }
+        public void createNewTableFile()
+        {
+            OutputToTable NewSave = new OutputToTable();
             NewSave.createNewTextFile(this);
         }
         public void SaveCrewTemplate()

@@ -154,6 +154,10 @@ namespace STF_CharacterPlanner
                         {
                             anInt = theOldInt;
                         }
+                        if (myColName.Equals("Max Officers"))
+                        {
+                            anInt = 0;
+                        }
                         dr[myColName] = anInt;
                     }
                 }

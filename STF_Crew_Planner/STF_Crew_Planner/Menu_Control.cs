@@ -66,5 +66,11 @@ namespace STF_CharacterPlanner
             myParent = (this.Parent as MainForm);
             myParent.RefreshDataFromWiki();
         }
+
+        private void saveTablesButton_Click(object sender, EventArgs e)
+        {
+            myParent = (this.Parent as MainForm);
+            myParent.createNewTableFile();
+        }
     }
 }

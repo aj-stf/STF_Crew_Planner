@@ -56,7 +56,7 @@ namespace STF_CharacterPlanner
             if (theOne.Equals("Captain"))
             {
                 is_Captain = true;
-                maxRanks = 37;
+                maxRanks = 45;
                 setLists();
                 populateBoxes();
             }
@@ -68,14 +68,14 @@ namespace STF_CharacterPlanner
         }
         private void SetConfig()
         {
-            maxRanks = 33;
+            maxRanks = 40;
             if (whichOfficer == null)
             {
 
             }else
             {
                 if(whichOfficer.Equals("Captain"))
-                    maxRanks = 37;
+                    maxRanks = 45;
             }
             setLists();
             Job1 = "";
@@ -286,9 +286,9 @@ namespace STF_CharacterPlanner
             }
             rankJob1.Items.Clear();
             var ourNum = ranksList.Count - (Rank2 + Rank3);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {
@@ -303,9 +303,9 @@ namespace STF_CharacterPlanner
             }
             rankJob2.Items.Clear();
             var ourNum = ranksList.Count - (Rank1 + Rank3);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {
@@ -320,9 +320,9 @@ namespace STF_CharacterPlanner
             }
             rankJob3.Items.Clear();
             var ourNum = ranksList.Count - (Rank2 + Rank1);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {
@@ -496,9 +496,9 @@ namespace STF_CharacterPlanner
         {
             rankJob1.Items.Clear();
             var ourNum = ranksList.Count - (Rank2 + Rank3);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {
@@ -509,9 +509,9 @@ namespace STF_CharacterPlanner
         {
             rankJob2.Items.Clear();
             var ourNum = ranksList.Count - (Rank1 + Rank3);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {
@@ -522,9 +522,9 @@ namespace STF_CharacterPlanner
         {
             rankJob3.Items.Clear();
             var ourNum = ranksList.Count - (Rank2 + Rank1);
-            if (ourNum > 30)
+            if (ourNum > 32)
             {
-                ourNum = 30;
+                ourNum = 32;
             }
             for (int counter = 0; counter < ourNum; counter++)
             {

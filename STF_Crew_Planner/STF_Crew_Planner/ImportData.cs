@@ -401,16 +401,15 @@ namespace STF_CharacterPlanner
         {
 
             List<string> myStrings = new List<string>();
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             TotalSkillDataTable = new DataTable();
-            TotalSkillDataTable = CreateSkillTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
             MyShip = new DataStorage.SelectedShip();
             MyShip = theForm.theShip;
 
             PollOfficerPool(theForm);
-            SetCrewSkillPool(theCrew);
+            SetCrewSkillPool(theCrew,theForm);
             CreateCrewDicePools();
             SetStats();
 
@@ -459,16 +458,15 @@ namespace STF_CharacterPlanner
         {
 
             List<string> myStrings = new List<string>();
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             TotalSkillDataTable = new DataTable();
-            TotalSkillDataTable = CreateSkillTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
             MyShip = new DataStorage.SelectedShip();
             MyShip = theForm.theShip;
 
             PollOfficerPool(theForm);
-            SetCrewSkillPool(theCrew);
+            SetCrewSkillPool(theCrew,theForm);
             CreateCrewDicePools();
             SetStats();
 
@@ -512,6 +510,82 @@ namespace STF_CharacterPlanner
             //long range range change (speed, nav, tactics*, command*)
             //short range change (agility, pilot, tactics*, command*)
             return myStrings;
+        }
+        public DataTable CalculateTableCombatPools(List<DataStorage.CrewDataStruct> theCrew, MainForm theForm)
+        {
+
+            List<string> myStrings = new List<string>();
+            DataStorage stf_Data = theForm.ReturnMainData();
+
+            TotalSkillDataTable = new DataTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
+            MyShip = new DataStorage.SelectedShip();
+            MyShip = theForm.theShip;
+
+            PollOfficerPool(theForm);
+            SetCrewSkillPool(theCrew,theForm);
+            CreateCrewDicePools();
+            SetStats();
+
+            int gunneryL = Speed + Navigation + Gunnery + Tactics;
+            int gunneryS = Agility + Pilot + Gunnery + Tactics;
+
+            int evadeL = Speed + Pilot + Electronics + Command;
+            int evadeS = Agility + Pilot + Electronics + Command;
+
+            int escape = Speed + Pilot + Tactics + Command;
+
+            int rangeL = Speed + Navigation + Tactics + Command;
+            int rangeS = Agility + Pilot + Tactics + Command;
+
+            var dt = new DataTable();
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Type";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Dice";
+            dg.DataType = typeof(Int32);
+            dg.DefaultValue = 0;
+
+            dt.Columns.Add(dc);
+            dt.Columns.Add(dg);
+
+            DataRow longAcc = dt.NewRow();
+            DataRow shortAcc = dt.NewRow();
+            DataRow longEvade = dt.NewRow();
+            DataRow shortEvade = dt.NewRow();
+            DataRow longRange = dt.NewRow();
+            DataRow shortRange = dt.NewRow();
+            DataRow escapeRow = dt.NewRow();
+
+            longAcc[0] = "Long Accuracy";
+            longAcc[1] = gunneryL;
+            shortAcc[0] = "Short Accuracy";
+            shortAcc[1] = gunneryS;
+
+            longEvade[0] = "Long Evasion";
+            longEvade[1] = evadeL;
+            shortEvade[0] = "Short Evasion";
+            shortEvade[1] = evadeS;
+
+            longRange[0] = "Long Range Change";
+            longRange[1] = rangeL;
+            shortRange[0] = "Short Range Change";
+            shortRange[1] = rangeS;
+            escapeRow[0] = "Escape";
+            escapeRow[1] = escape;
+
+            dt.Rows.Add(longAcc);
+            dt.Rows.Add(shortAcc);
+            dt.Rows.Add(longEvade);
+            dt.Rows.Add(shortEvade);
+            dt.Rows.Add(longRange);
+            dt.Rows.Add(shortRange);
+            dt.Rows.Add(escapeRow);
+
+            return dt;
         }
         private void PrintTest()
         {
@@ -606,11 +680,10 @@ namespace STF_CharacterPlanner
                 }
             }
         }
-        private DataTable CreateSkillTable()
+        private DataTable CreateSkillTable(MainForm theForm)
         {
             var dt = new DataTable();
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             if (stf_Data == null)
             {
@@ -643,7 +716,7 @@ namespace STF_CharacterPlanner
         private void PollOfficerPool(MainForm theForm)
         {
             OfficerSkillPools = new DataTable();
-            OfficerSkillPools = CreateSkillTable();
+            OfficerSkillPools = CreateSkillTable(theForm);
             var Officer1 = new DataTable();
             var Officer2 = new DataTable();
             var Officer3 = new DataTable();
@@ -699,20 +772,19 @@ namespace STF_CharacterPlanner
                 OfficerSkillPools.Rows[x][1] = sumInt;
             }
         }
-        private void SetCrewSkillPool(List<DataStorage.CrewDataStruct> theCrew)
+        private void SetCrewSkillPool(List<DataStorage.CrewDataStruct> theCrew, MainForm theForm)
         {
             CrewSkillPools = new DataTable();
-            CrewSkillPools = CreateSkillTable();
+            CrewSkillPools = CreateSkillTable(theForm);
             foreach (DataStorage.CrewDataStruct aCrew in theCrew)
             {
-                var newDT = GetSkillData(aCrew.Job, aCrew.Rank);
+                var newDT = GetSkillData(aCrew.Job, aCrew.Rank,theForm);
                 PollSkillData(newDT, aCrew.Num);
             }
         }
-        private DataTable GetSkillData(string term, Int32 theRank)
+        private DataTable GetSkillData(string term, Int32 theRank, MainForm theForm)
         {
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             DataTable tblFiltered = stf_Data.skill_per_job_table.AsEnumerable().Where(row => row.Field<String>("Job") == term && row.Field<Int32>("Rank") == theRank).CopyToDataTable();
             var myObject = new DataObject();
@@ -769,16 +841,15 @@ namespace STF_CharacterPlanner
         {
 
             List<string> myStrings = new List<string>();
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             TotalSkillDataTable = new DataTable();
-            TotalSkillDataTable = CreateSkillTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
             MyShip = new DataStorage.SelectedShip();
             MyShip = theForm.theShip;
 
             PollOfficerPool(theForm);
-            SetCrewSkillPool(theCrew);
+            SetCrewSkillPool(theCrew, theForm);
             CreateCrewDicePools();
 
             myStrings = SetSkillsDisplayString(theForm);
@@ -832,6 +903,129 @@ namespace STF_CharacterPlanner
             CardGameString += "Black Market     (Intimidate + Stealth) + Cpt's Charisma\n";
             CardGameString += BlackMarket;
             return CardGameString;
+        }
+        public DataTable CalculateShipSkillTable(List<DataStorage.CrewDataStruct> theCrew, MainForm theForm)
+        {
+
+            List<string> myStrings = new List<string>();
+            DataStorage stf_Data = theForm.ReturnMainData();
+
+            TotalSkillDataTable = new DataTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
+            MyShip = new DataStorage.SelectedShip();
+            MyShip = theForm.theShip;
+
+            PollOfficerPool(theForm);
+            SetCrewSkillPool(theCrew,theForm);
+            CreateCrewDicePools();
+
+            var dt = new DataTable();
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Skill";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Crew";
+            dg.DataType = typeof(Int32);
+            dg.DefaultValue = 0;
+
+            DataColumn dh = new DataColumn();
+            dh.ColumnName = "Ship";
+            dh.DataType = typeof(Int32);
+            dh.DefaultValue = 0;
+
+            DataColumn di = new DataColumn();
+            di.ColumnName = "Percent";
+            di.DataType = typeof(String);
+            di.DefaultValue = 0;
+
+            dt.Columns.Add(dc);
+            dt.Columns.Add(dg);
+            dt.Columns.Add(dh);
+            dt.Columns.Add(di);
+
+            if (TotalSkillDataTable.Rows.Count > 0 && theForm.theShip.isSet)
+            {
+                foreach (DataRow dr in TotalSkillDataTable.Rows)
+                {
+                    var checkName = dr[0].ToString();
+                    if (checkName.Equals("Pilot") || checkName.Equals("Navigation") || checkName.Equals("Electronics") || checkName.Equals("Ship Ops") || checkName.Equals("Gunnery"))
+                    {
+                        var shipString = theForm.theShip.Ship.Rows[0][checkName].ToString();
+                        DataRow myRow = ReturnShipSkillRow(dt, dr, shipString);
+                        dt.Rows.Add(myRow);
+                    }
+                }
+            }
+            return dt;
+        }
+        public DataTable CalculateCrewSkillTable(List<DataStorage.CrewDataStruct> theCrew, MainForm theForm)
+        {
+
+            List<string> myStrings = new List<string>();
+            DataStorage stf_Data = theForm.ReturnMainData();
+
+            TotalSkillDataTable = new DataTable();
+            TotalSkillDataTable = CreateSkillTable(theForm);
+            MyShip = new DataStorage.SelectedShip();
+            MyShip = theForm.theShip;
+
+            PollOfficerPool(theForm);
+            SetCrewSkillPool(theCrew,theForm);
+            CreateCrewDicePools();
+
+            var dt = new DataTable();
+            DataColumn dc = new DataColumn();
+            dc.ColumnName = "Skill";
+            dc.DataType = typeof(String);
+            dc.DefaultValue = "null";
+
+            DataColumn dg = new DataColumn();
+            dg.ColumnName = "Crew";
+            dg.DataType = typeof(Int32);
+            dg.DefaultValue = 0;
+
+            dt.Columns.Add(dc);
+            dt.Columns.Add(dg);
+
+
+            if (TotalSkillDataTable.Rows.Count > 0 && theForm.theShip.isSet)
+            {
+                foreach (DataRow dr in TotalSkillDataTable.Rows)
+                {
+                    var checkName = dr[0].ToString();
+                    if (checkName.Equals("Blades") || checkName.Equals("Pistols") || checkName.Equals("Evasion") || checkName.Equals("Rifles") || checkName.Equals("Pilot") || checkName.Equals("Rifles") || checkName.Equals("Navigation") || checkName.Equals("Electronics") || checkName.Equals("Ship Ops") || checkName.Equals("Gunnery"))
+                    {
+
+                    }
+                    else
+                    {
+                        DataRow myRow = dt.NewRow();
+                        myRow[0] = dr[0].ToString();
+                        myRow[1] = Int32.Parse(dr[1].ToString());
+                    }
+                }
+            }
+            else if (TotalSkillDataTable.Rows.Count > 0)
+            {
+                foreach (DataRow dr in TotalSkillDataTable.Rows)
+                {
+                    var myString = DisplayRowString(dr);
+                    var checkName = dr[0].ToString();
+                    if (checkName.Equals("Blades") || checkName.Equals("Pistols") || checkName.Equals("Evasion") || checkName.Equals("Rifles"))
+                    {
+
+                    }
+                    else
+                    {
+                        DataRow myRow = dt.NewRow();
+                        myRow[0] = dr[0].ToString();
+                        myRow[1] = Int32.Parse(dr[1].ToString());
+                    }
+                }
+            }
+            return dt;
         }
         private List<string> SetSkillsDisplayString(MainForm theForm)
         {
@@ -913,6 +1107,23 @@ namespace STF_CharacterPlanner
             }
             return myString;
         }
+        private DataRow ReturnShipSkillRow(DataTable dt, DataRow inputRow, string ShipValue)
+        {
+            var dr = dt.NewRow();
+
+            double CrewDice = Int32.Parse(inputRow[1].ToString());
+            double ShipDice = Int32.Parse(ShipValue);
+            double PctValue = (CrewDice / ShipDice) * 100;
+            PctValue = Math.Round(PctValue, 2);
+            string myPct = PctValue.ToString();
+
+            dr[0] = inputRow[0].ToString();
+            dr[1] = inputRow[1];
+            dr[2] = Int32.Parse(ShipValue);
+            dr[3] = myPct;
+
+            return dr;
+        }
         private string DisplayRowPlusShipString(DataRow dr, string ShipValue)
         {
             var snglTab = "\t";
@@ -955,11 +1166,10 @@ namespace STF_CharacterPlanner
                 }
             }
         }
-        private DataTable CreateSkillTable()
+        private DataTable CreateSkillTable(MainForm theForm)
         {
             var dt = new DataTable();
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             if (stf_Data == null)
             {
@@ -992,7 +1202,7 @@ namespace STF_CharacterPlanner
         private void PollOfficerPool(MainForm theForm)
         {
             OfficerSkillPools = new DataTable();
-            OfficerSkillPools = CreateSkillTable();
+            OfficerSkillPools = CreateSkillTable(theForm);
             var Officer1 = new DataTable();
             var Officer2 = new DataTable();
             var Officer3 = new DataTable();
@@ -1048,20 +1258,19 @@ namespace STF_CharacterPlanner
                 OfficerSkillPools.Rows[x][1] = sumInt;
             }
         }
-        private void SetCrewSkillPool(List<DataStorage.CrewDataStruct> theCrew)
+        private void SetCrewSkillPool(List<DataStorage.CrewDataStruct> theCrew, MainForm theForm)
         {
             CrewSkillPools = new DataTable();
-            CrewSkillPools = CreateSkillTable();
+            CrewSkillPools = CreateSkillTable(theForm);
             foreach (DataStorage.CrewDataStruct aCrew in theCrew)
             {
-                var newDT = GetSkillData(aCrew.Job, aCrew.Rank);
+                var newDT = GetSkillData(aCrew.Job, aCrew.Rank,theForm);
                 PollSkillData(newDT, aCrew.Num);
             }
         }
-        private DataTable GetSkillData(string term, Int32 theRank)
+        private DataTable GetSkillData(string term, Int32 theRank, MainForm theForm)
         {
-            DataStorage stf_Data = DataStorage.Instance;
-            stf_Data.InstatiateTables();
+            DataStorage stf_Data = theForm.ReturnMainData();
 
             DataTable tblFiltered = stf_Data.skill_per_job_table.AsEnumerable().Where(row => row.Field<String>("Job") == term && row.Field<Int32>("Rank") == theRank).CopyToDataTable();
             var myObject = new DataObject();

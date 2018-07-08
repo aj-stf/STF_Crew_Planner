@@ -37,6 +37,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.searchTalentButton = new System.Windows.Forms.Button();
             this.refreshWikiButton = new System.Windows.Forms.Button();
+            this.saveTablesButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // resetButton
@@ -55,7 +56,7 @@
             // 
             this.saveTextButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.saveTextButton.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.saveTextButton.Location = new System.Drawing.Point(84, 63);
+            this.saveTextButton.Location = new System.Drawing.Point(575, 63);
             this.saveTextButton.Name = "saveTextButton";
             this.saveTextButton.Size = new System.Drawing.Size(101, 23);
             this.saveTextButton.TabIndex = 2;
@@ -98,7 +99,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.button1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button1.Location = new System.Drawing.Point(191, 63);
+            this.button1.Location = new System.Drawing.Point(84, 63);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(84, 23);
             this.button1.TabIndex = 6;
@@ -110,7 +111,7 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
             this.button2.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.button2.Location = new System.Drawing.Point(281, 63);
+            this.button2.Location = new System.Drawing.Point(174, 63);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(84, 23);
             this.button2.TabIndex = 7;
@@ -140,11 +141,24 @@
             this.refreshWikiButton.UseVisualStyleBackColor = true;
             this.refreshWikiButton.Click += new System.EventHandler(this.refreshWikiButton_Click);
             // 
+            // saveTablesButton
+            // 
+            this.saveTablesButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(230)))), ((int)(((byte)(247)))));
+            this.saveTablesButton.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.saveTablesButton.Location = new System.Drawing.Point(442, 63);
+            this.saveTablesButton.Name = "saveTablesButton";
+            this.saveTablesButton.Size = new System.Drawing.Size(127, 23);
+            this.saveTablesButton.TabIndex = 10;
+            this.saveTablesButton.Text = "Output Forum Format";
+            this.saveTablesButton.UseVisualStyleBackColor = false;
+            this.saveTablesButton.Click += new System.EventHandler(this.saveTablesButton_Click);
+            // 
             // Menu_Control
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.saveTablesButton);
             this.Controls.Add(this.refreshWikiButton);
             this.Controls.Add(this.searchTalentButton);
             this.Controls.Add(this.button2);
@@ -171,5 +185,6 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button searchTalentButton;
         private System.Windows.Forms.Button refreshWikiButton;
+        private System.Windows.Forms.Button saveTablesButton;
     }
 }

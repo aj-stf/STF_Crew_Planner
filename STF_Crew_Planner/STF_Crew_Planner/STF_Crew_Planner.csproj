@@ -134,6 +134,7 @@
     <Compile Include="OfficerSkillDisplay.Designer.cs">
       <DependentUpon>OfficerSkillDisplay.cs</DependentUpon>
     </Compile>
+    <Compile Include="OutputToTable.cs" />
     <Compile Include="OutputToFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
